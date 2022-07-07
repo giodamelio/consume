@@ -25,9 +25,6 @@ ENV NVM_DIR=/usr/local/share/nvm
 ENV NVM_SYMLINK_CURRENT=true
 ENV PATH=${NVM_DIR}/current/bin:${PATH}
 
-# [Optional, Choice] Node.js version: none, lts/*, 16, 14, 12, 10
-ARG NODE_VERSION="none"
-
 # Install needed packages and setup non-root user. Use a separate RUN statement to add your own dependencies.
 RUN apt-get update \
   && export DEBIAN_FRONTEND=noninteractive \
@@ -35,13 +32,6 @@ RUN apt-get update \
   && curl -sSL ${COMMON_SCRIPT_SOURCE} -o /tmp/common-setup.sh \
   && ([ "${COMMON_SCRIPT_SHA}" = "dev-mode" ] || (echo "${COMMON_SCRIPT_SHA} */tmp/common-setup.sh" | sha256sum -c -)) \
   && /bin/bash /tmp/common-setup.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" \
-  #
-  # [Optional] Install Node.js for use with web applications
-  && if [ "$NODE_VERSION" != "none" ]; then \
-  curl -sSL ${NODE_SCRIPT_SOURCE} -o /tmp/node-setup.sh \
-  && ([ "${NODE_SCRIPT_SHA}" = "dev-mode" ] || (echo "${NODE_SCRIPT_SHA} */tmp/node-setup.sh" | sha256sum -c -)) \
-  && /bin/bash /tmp/node-setup.sh "${NVM_DIR}" "${NODE_VERSION}" "${USERNAME}"; \
-  fi \
   #
   # Install dependencies
   && apt-get install -y build-essential \
@@ -54,6 +44,9 @@ RUN apt-get update \
 RUN su ${USERNAME} -c "mix local.hex --force \
   && mix local.rebar --force \
   && mix archive.install --force hex phx_new ${PHOENIX_VERSION}"
+
+# Install Just
+RUN curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | sudo bash -s -- --to /usr/local/bin/
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update \
