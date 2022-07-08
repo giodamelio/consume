@@ -1,8 +1,14 @@
 defmodule Consume.Feeds.Fetcher.Rss20 do
   alias Consume.Feeds
 
-  def fetch(_feed_id, _url) do
-    nil
+  def fetch(%Feeds.Feed{} = feed) do
+    with {:ok, response} <- request(feed.url),
+         {:ok, changes} <- save_fetch(feed.id, response.body) do
+      {:ok, changes}
+    else
+      err ->
+        {:error, err}
+    end
   end
 
   def request(url) do
