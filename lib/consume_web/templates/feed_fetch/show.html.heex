@@ -1,6 +1,10 @@
 <h1>Show Feed fetch</h1>
 
 <ul>
+  <li>
+    <strong>Feed:</strong>
+    <%= link @feed_fetch.feed_id, to: Routes.feed_path(@conn, :show, @feed_fetch.feed_id) %>
+  </li>
 
   <li>
     <strong>Data:</strong>
@@ -11,11 +15,11 @@
     <strong>Sha256:</strong>
     <%= @feed_fetch.sha256 %>
   </li>
+
   <li>
     <strong>Inserted At:</strong>
     <%= @feed_fetch.inserted_at %>
   </li>
-
 </ul>
 
 <span><%= link "Edit", to: Routes.feed_fetch_path(@conn, :edit, @feed_fetch) %></span> |

@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Feed</th>
       <th>Data</th>
       <th>Sha256</th>
       <th>Inserted At</th>
@@ -13,6 +14,7 @@
   <tbody>
 <%= for feed_fetch <- @feed_fetches do %>
     <tr>
+      <td><%= link feed_fetch.feed_id, to: Routes.feed_path(@conn, :show, feed_fetch.feed_id) %></td>
       <td><%= feed_fetch.data %></td>
       <td><%= feed_fetch.sha256 %></td>
       <td><%= feed_fetch.inserted_at %></td>

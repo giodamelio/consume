@@ -23,7 +23,12 @@ defmodule ConsumeWeb.FeedFetchControllerTest do
 
   describe "create feed_fetch" do
     test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.feed_fetch_path(conn, :create), feed_fetch: @create_attrs)
+      feed = feed_fixture()
+
+      conn =
+        post(conn, Routes.feed_fetch_path(conn, :create),
+          feed_fetch: Map.put(@create_attrs, :feed_id, feed.id)
+        )
 
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == Routes.feed_fetch_path(conn, :show, id)

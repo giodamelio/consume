@@ -102,11 +102,15 @@ defmodule Consume.FeedsTest do
     end
 
     test "create_feed_fetch/1 with valid data creates a feed_fetch" do
+      feed = feed_fixture()
+
       valid_attrs = %{
+        feed_id: feed.id,
         data: "some data"
       }
 
       assert {:ok, %FeedFetch{} = feed_fetch} = Feeds.create_feed_fetch(valid_attrs)
+      assert feed_fetch.feed_id == feed.id
       assert feed_fetch.data == "some data"
 
       assert feed_fetch.sha256 ==

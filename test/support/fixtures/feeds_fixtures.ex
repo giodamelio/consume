@@ -26,11 +26,13 @@ defmodule Consume.FeedsFixtures do
   Generate a feed_fetch.
   """
   def feed_fetch_fixture(attrs \\ %{}) do
+    feed = feed_fixture()
+
     {:ok, feed_fetch} =
       attrs
       |> Enum.into(%{
-        data: "some data",
-        sha256: "some sha256"
+        feed_id: feed.id,
+        data: "some data"
       })
       |> Consume.Feeds.create_feed_fetch()
 
