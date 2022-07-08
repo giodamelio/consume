@@ -53,5 +53,11 @@ RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends ripgrep
 
+# Install usql
+ARG USQL_VERSION="0.10.0"
+RUN wget https://github.com/xo/usql/releases/download/v${USQL_VERSION}/usql_static-${USQL_VERSION}-linux-amd64.tar.bz2 \
+  && tar xfv usql_static-${USQL_VERSION}-linux-amd64.tar.bz2 \
+  && mv usql_static /usr/local/bin/usql
+
 # [Optional] Uncomment this line to install additional package.
 # RUN  mix ...
