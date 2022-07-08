@@ -51,7 +51,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | sudo 
 # Install Ripgrep
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends ripgrep
+    && apt-get -y install --no-install-recommends ripgrep inotify-tools
 
 # Install usql
 ARG USQL_VERSION="0.10.0"
