@@ -89,7 +89,7 @@ defmodule Consume.FeedsTest do
 
     import Consume.FeedsFixtures
 
-    @invalid_attrs %{data: nil, sha256: nil}
+    @invalid_attrs %{data: nil}
 
     test "list_feed_fetches/0 returns all feed_fetches" do
       feed_fetch = feed_fetch_fixture()
@@ -102,11 +102,15 @@ defmodule Consume.FeedsTest do
     end
 
     test "create_feed_fetch/1 with valid data creates a feed_fetch" do
-      valid_attrs = %{data: "some data", sha256: "some sha256"}
+      valid_attrs = %{
+        data: "some data"
+      }
 
       assert {:ok, %FeedFetch{} = feed_fetch} = Feeds.create_feed_fetch(valid_attrs)
       assert feed_fetch.data == "some data"
-      assert feed_fetch.sha256 == "some sha256"
+
+      assert feed_fetch.sha256 ==
+               "1307990E6BA5CA145EB35E99182A9BEC46531BC54DDF656A602C780FA0240DEE"
     end
 
     test "create_feed_fetch/1 with invalid data returns error changeset" do
@@ -115,11 +119,13 @@ defmodule Consume.FeedsTest do
 
     test "update_feed_fetch/2 with valid data updates the feed_fetch" do
       feed_fetch = feed_fetch_fixture()
-      update_attrs = %{data: "some updated data", sha256: "some updated sha256"}
+      update_attrs = %{data: "some updated data"}
 
       assert {:ok, %FeedFetch{} = feed_fetch} = Feeds.update_feed_fetch(feed_fetch, update_attrs)
       assert feed_fetch.data == "some updated data"
-      assert feed_fetch.sha256 == "some updated sha256"
+
+      assert feed_fetch.sha256 ==
+               "F47C56E3430C735356CBB66685B6F15425178E47420046E11824391EF4F7FBC1"
     end
 
     test "update_feed_fetch/2 with invalid data returns error changeset" do

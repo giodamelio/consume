@@ -3,9 +3,9 @@ defmodule ConsumeWeb.FeedFetchControllerTest do
 
   import Consume.FeedsFixtures
 
-  @create_attrs %{data: "some data", sha256: "some sha256"}
-  @update_attrs %{data: "some updated data", sha256: "some updated sha256"}
-  @invalid_attrs %{data: nil, sha256: nil}
+  @create_attrs %{data: "some data"}
+  @update_attrs %{data: "some updated data"}
+  @invalid_attrs %{data: nil}
 
   describe "index" do
     test "lists all feed_fetches", %{conn: conn} do
@@ -51,15 +51,21 @@ defmodule ConsumeWeb.FeedFetchControllerTest do
     setup [:create_feed_fetch]
 
     test "redirects when data is valid", %{conn: conn, feed_fetch: feed_fetch} do
-      conn = put(conn, Routes.feed_fetch_path(conn, :update, feed_fetch), feed_fetch: @update_attrs)
+      conn =
+        put(conn, Routes.feed_fetch_path(conn, :update, feed_fetch), feed_fetch: @update_attrs)
+
       assert redirected_to(conn) == Routes.feed_fetch_path(conn, :show, feed_fetch)
 
       conn = get(conn, Routes.feed_fetch_path(conn, :show, feed_fetch))
-      assert html_response(conn, 200) =~ "some updated sha256"
+
+      assert html_response(conn, 200) =~
+               "F47C56E3430C735356CBB66685B6F15425178E47420046E11824391EF4F7FBC1"
     end
 
     test "renders errors when data is invalid", %{conn: conn, feed_fetch: feed_fetch} do
-      conn = put(conn, Routes.feed_fetch_path(conn, :update, feed_fetch), feed_fetch: @invalid_attrs)
+      conn =
+        put(conn, Routes.feed_fetch_path(conn, :update, feed_fetch), feed_fetch: @invalid_attrs)
+
       assert html_response(conn, 200) =~ "Edit Feed fetch"
     end
   end

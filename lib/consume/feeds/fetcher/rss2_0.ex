@@ -10,14 +10,9 @@ defmodule Consume.Feeds.Fetcher.Rss20 do
   end
 
   def save_fetch(feed_id, data) do
-    hash =
-      :crypto.hash(:sha256, data)
-      |> Base.encode16()
-
     Feeds.create_feed_fetch(%{
       feed_id: feed_id,
-      data: data,
-      sha256: hash
+      data: data
     })
   end
 end

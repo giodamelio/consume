@@ -13,8 +13,23 @@ defmodule Consume.Feeds.FeedFetch do
   @doc false
   def changeset(feed_fetch, attrs) do
     feed_fetch
-    |> cast(attrs, [:sha256, :data, :feed_id])
-    |> validate_required([:sha256, :data])
+    |> cast(attrs, [:data, :feed_id])
+    |> validate_required([:data])
     |> foreign_key_constraint(:feed_id)
+    |> hash_data()
+  end
+
+  defp hash_data(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{data: data}} ->
+        hash =
+          :crypto.hash(:sha256, data)
+          |> Base.encode16()
+
+        put_change(changeset, :sha256, hash)
+
+      _ ->
+        changeset
+    end
   end
 end
