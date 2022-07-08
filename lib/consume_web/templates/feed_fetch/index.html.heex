@@ -5,6 +5,7 @@
     <tr>
       <th>Data</th>
       <th>Sha256</th>
+      <th>Inserted At</th>
 
       <th></th>
     </tr>
@@ -14,6 +15,7 @@
     <tr>
       <td><%= feed_fetch.data %></td>
       <td><%= feed_fetch.sha256 %></td>
+      <td><%= feed_fetch.inserted_at %></td>
 
       <td>
         <span><%= link "Show", to: Routes.feed_fetch_path(@conn, :show, feed_fetch) %></span>
