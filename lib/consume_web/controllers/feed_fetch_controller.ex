@@ -4,6 +4,12 @@ defmodule ConsumeWeb.FeedFetchController do
   alias Consume.Feeds
   alias Consume.Feeds.FeedFetch
 
+  def index(conn, %{"feed_id" => feed_id}) do
+    IO.puts("Got a feed id: #{feed_id}")
+    feed_fetches = Feeds.list_feed_fetches_by_feed(feed_id)
+    render(conn, "index.html", feed_fetches: feed_fetches)
+  end
+
   def index(conn, _params) do
     feed_fetches = Feeds.list_feed_fetches()
     render(conn, "index.html", feed_fetches: feed_fetches)

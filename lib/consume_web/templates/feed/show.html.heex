@@ -30,4 +30,5 @@
 </ul>
 
 <span><%= link "Edit", to: Routes.feed_path(@conn, :edit, @feed) %></span> |
-<span><%= link "Back", to: Routes.feed_path(@conn, :index) %></span>
+<span><%= link "Back", to: Routes.feed_path(@conn, :index) %></span> |
+<span><%= link "Show Fetches", to: Routes.feed_fetch_path(@conn, :index, feed_id: @feed.id) %></span>

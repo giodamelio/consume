@@ -96,6 +96,14 @@ defmodule Consume.FeedsTest do
       assert Feeds.list_feed_fetches() == [feed_fetch]
     end
 
+    test "list_feed_fetches_by_feed/1 returns all feed_fetches that match the correct feed" do
+      feed_fetch_fixture()
+      feed_fetch_fixture()
+      feed_fetch = feed_fetch_fixture()
+
+      assert Feeds.list_feed_fetches_by_feed(feed_fetch.feed_id) == [feed_fetch]
+    end
+
     test "get_feed_fetch!/1 returns the feed_fetch with given id" do
       feed_fetch = feed_fetch_fixture()
       assert Feeds.get_feed_fetch!(feed_fetch.id) == feed_fetch

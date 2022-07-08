@@ -118,6 +118,19 @@ defmodule Consume.Feeds do
   end
 
   @doc """
+  Returns the list of feed_fetches that belong to a specific feed.
+
+  ## Examples
+
+      iex> list_feed_fetches_by_feed(2)
+      [%FeedFetch{}, ...]
+
+  """
+  def list_feed_fetches_by_feed(feed_id) do
+    Repo.all(from f in FeedFetch, where: f.feed_id == ^feed_id)
+  end
+
+  @doc """
   Gets a single feed_fetch.
 
   Raises `Ecto.NoResultsError` if the Feed fetch does not exist.
