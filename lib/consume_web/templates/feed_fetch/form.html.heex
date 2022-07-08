@@ -5,15 +5,15 @@
     </div>
   <% end %>
 
+  <%= label f, :data %>
+  <%= text_input f, :data %>
+  <%= error_tag f, :data %>
+
   <%= if @type == :update do %>
   <%= label f, :sha256 %>
   <%= text_input f, :sha256, disabled: true %>
   <%= error_tag f, :sha256 %>
   <% end %>
-
-  <%= label f, :data %>
-  <%= text_input f, :data %>
-  <%= error_tag f, :data %>
 
   <div>
     <%= submit "Save" %>

@@ -3,8 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Sha256</th>
       <th>Data</th>
+      <th>Sha256</th>
 
       <th></th>
     </tr>
@@ -12,8 +12,8 @@
   <tbody>
 <%= for feed_fetch <- @feed_fetches do %>
     <tr>
-      <td><%= feed_fetch.sha256 %></td>
       <td><%= feed_fetch.data %></td>
+      <td><%= feed_fetch.sha256 %></td>
 
       <td>
         <span><%= link "Show", to: Routes.feed_fetch_path(@conn, :show, feed_fetch) %></span>
