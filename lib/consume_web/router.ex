@@ -20,6 +20,7 @@ defmodule ConsumeWeb.Router do
     get "/", PageController, :index
 
     resources "/feeds", FeedController
+    resources "/feed_fetches", FeedFetchController
   end
 
   # Other scopes may use custom stacks.
