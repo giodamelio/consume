@@ -3,9 +3,30 @@ defmodule ConsumeWeb.FeedControllerTest do
 
   import Consume.FeedsFixtures
 
-  @create_attrs %{fetch_frequency_seconds: 42, fetched_at: ~U[2022-07-07 14:56:00Z], name: "some name", type: :rss2_0, url: "some url"}
-  @update_attrs %{fetch_frequency_seconds: 43, fetched_at: ~U[2022-07-08 14:56:00Z], name: "some updated name", type: :atom, url: "some updated url"}
-  @invalid_attrs %{fetch_frequency_seconds: nil, fetched_at: nil, name: nil, type: nil, url: nil}
+  @create_attrs %{
+    fetch_frequency_seconds: 42,
+    fetched_at: ~U[2022-07-07 14:56:00Z],
+    name: "some name",
+    fetcher: :http_get,
+    parser: :rss2_0,
+    url: "some url"
+  }
+  @update_attrs %{
+    fetch_frequency_seconds: 43,
+    fetched_at: ~U[2022-07-08 14:56:00Z],
+    name: "some updated name",
+    fetcher: :http_get,
+    parser: :atom,
+    url: "some updated url"
+  }
+  @invalid_attrs %{
+    fetch_frequency_seconds: nil,
+    fetched_at: nil,
+    name: nil,
+    fetcher: nil,
+    parser: nil,
+    url: nil
+  }
 
   describe "index" do
     test "lists all feeds", %{conn: conn} do

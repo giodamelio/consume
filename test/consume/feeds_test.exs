@@ -12,7 +12,8 @@ defmodule Consume.FeedsTest do
       fetch_frequency_seconds: nil,
       fetched_at: nil,
       name: nil,
-      type: nil,
+      fetcher: nil,
+      parser: nil,
       url: nil
     }
 
@@ -31,7 +32,8 @@ defmodule Consume.FeedsTest do
         fetch_frequency_seconds: 42,
         fetched_at: ~U[2022-07-07 02:04:00Z],
         name: "some name",
-        type: :rss2_0,
+        fetcher: :http_get,
+        parser: :rss2_0,
         url: "some url"
       }
 
@@ -39,7 +41,8 @@ defmodule Consume.FeedsTest do
       assert feed.fetch_frequency_seconds == 42
       assert feed.fetched_at == ~U[2022-07-07 02:04:00Z]
       assert feed.name == "some name"
-      assert feed.type == :rss2_0
+      assert feed.fetcher == :http_get
+      assert feed.parser == :rss2_0
       assert feed.url == "some url"
     end
 
@@ -54,7 +57,8 @@ defmodule Consume.FeedsTest do
         fetch_frequency_seconds: 43,
         fetched_at: ~U[2022-07-08 02:04:00Z],
         name: "some updated name",
-        type: :atom,
+        fetcher: :http_get,
+        parser: :jsonfeed,
         url: "some updated url"
       }
 
@@ -62,7 +66,8 @@ defmodule Consume.FeedsTest do
       assert feed.fetch_frequency_seconds == 43
       assert feed.fetched_at == ~U[2022-07-08 02:04:00Z]
       assert feed.name == "some updated name"
-      assert feed.type == :atom
+      assert feed.fetcher == :http_get
+      assert feed.parser == :jsonfeed
       assert feed.url == "some updated url"
     end
 

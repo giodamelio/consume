@@ -1,4 +1,4 @@
-defmodule Consume.Feeds.Fetcher.Rss20 do
+defmodule Consume.Feeds.Fetcher.HTTPGet do
   alias Consume.Feeds
 
   def fetch(%Feeds.Feed{} = feed) do

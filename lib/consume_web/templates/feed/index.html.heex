@@ -4,7 +4,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Type</th>
+      <th>Fetcher</th>
+      <th>Parser</th>
       <th>Url</th>
       <th>Fetched at</th>
       <th>Fetch frequency seconds</th>
@@ -16,7 +17,8 @@
 <%= for feed <- @feeds do %>
     <tr>
       <td><%= feed.name %></td>
-      <td><%= feed.type %></td>
+      <td><%= feed.fetcher %></td>
+      <td><%= feed.parser %></td>
       <td><%= feed.url %></td>
       <td><%= feed.fetched_at %></td>
       <td><%= feed.fetch_frequency_seconds %></td>

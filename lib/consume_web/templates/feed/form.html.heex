@@ -9,9 +9,13 @@
   <%= text_input f, :name %>
   <%= error_tag f, :name %>
 
-  <%= label f, :type %>
-  <%= select f, :type, Ecto.Enum.values(Consume.Feeds.Feed, :type), prompt: "Choose a value" %>
-  <%= error_tag f, :type %>
+  <%= label f, :fetcher %>
+  <%= select f, :fetcher, Ecto.Enum.values(Consume.Feeds.Feed, :fetcher), prompt: "Choose a value" %>
+  <%= error_tag f, :fetcher %>
+
+  <%= label f, :parser %>
+  <%= select f, :parser, Ecto.Enum.values(Consume.Feeds.Feed, :parser), prompt: "Choose a value" %>
+  <%= error_tag f, :parser %>
 
   <%= label f, :url %>
   <%= text_input f, :url %>

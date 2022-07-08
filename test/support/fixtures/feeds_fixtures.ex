@@ -14,7 +14,8 @@ defmodule Consume.FeedsFixtures do
         fetch_frequency_seconds: 42,
         fetched_at: ~U[2022-07-07 02:04:00Z],
         name: "some name",
-        type: :rss2_0,
+        fetcher: :http_get,
+        parser: :rss2_0,
         url: "some url"
       })
       |> Consume.Feeds.create_feed()
