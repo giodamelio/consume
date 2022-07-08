@@ -13,7 +13,8 @@ defmodule Consume.Feeds.FeedFetch do
   @doc false
   def changeset(feed_fetch, attrs) do
     feed_fetch
-    |> cast(attrs, [:sha256, :data])
+    |> cast(attrs, [:sha256, :data, :feed_id])
     |> validate_required([:sha256, :data])
+    |> foreign_key_constraint(:feed_id)
   end
 end
