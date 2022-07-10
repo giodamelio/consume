@@ -1,26 +1,36 @@
-<h1>Show Feed fetch</h1>
+<section class="flex flex-row flex-wrap">
+  <h1 class="basis-full">Show Feed fetch</h1>
 
-<ul>
-  <li>
-    <strong>Feed:</strong>
-    <%= link @feed_fetch.feed_id, to: Routes.feed_path(@conn, :show, @feed_fetch.feed_id) %>
-  </li>
+  <ul class="basis-full">
+    <li>
+      <strong>Feed:</strong>
+      <%= link @feed_fetch.feed_id, to: Routes.feed_path(@conn, :show, @feed_fetch.feed_id) %>
+    </li>
 
-  <li>
-    <strong>Data:</strong>
-    <%= @feed_fetch.data %>
-  </li>
+    <li>
+      <strong>Data:</strong>
+      <%= @feed_fetch.data %>
+    </li>
 
-  <li>
-    <strong>Sha256:</strong>
-    <%= @feed_fetch.sha256 %>
-  </li>
+    <li>
+      <strong>Sha256:</strong>
+      <%= @feed_fetch.sha256 %>
+    </li>
 
-  <li>
-    <strong>Inserted At:</strong>
-    <%= @feed_fetch.inserted_at %>
-  </li>
-</ul>
+    <li>
+      <strong>Inserted At:</strong>
+      <%= @feed_fetch.inserted_at %>
+    </li>
+  </ul>
 
-<span><%= link "Edit", to: Routes.feed_fetch_path(@conn, :edit, @feed_fetch) %></span> |
-<span><%= link "Back", to: Routes.feed_fetch_path(@conn, :index) %></span>
+  <nav class="basis-full my-6">
+    <ul class="inline-list">
+      <li>
+        <%= link "Edit", to: Routes.feed_fetch_path(@conn, :edit, @feed_fetch), class: "link-button" %> |
+      </li>
+      <li>
+        <%= link "Back", to: Routes.feed_fetch_path(@conn, :index), class: "link-button" %>
+      </li>
+    </ul>
+  </nav>
+</section>

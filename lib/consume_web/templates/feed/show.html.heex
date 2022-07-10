@@ -1,39 +1,44 @@
-<h1>Show Feed</h1>
+<section class="flex flex-row flex-wrap">
+  <h1 class="basis-full">Show Feed</h1>
 
-<ul>
+  <ul class="basis-full">
+    <li>
+      <strong>Name:</strong>
+      <%= @feed.name %>
+    </li>
+    <li>
+      <strong>Fetcher:</strong>
+      <%= @feed.fetcher %>
+    </li>
+    <li>
+      <strong>Parser:</strong>
+      <%= @feed.parser %>
+    </li>
+    <li>
+      <strong>Url:</strong>
+      <%= @feed.url %>
+    </li>
+    <li>
+      <strong>Fetched at:</strong>
+      <%= @feed.fetched_at %>
+    </li>
+    <li>
+      <strong>Fetch frequency seconds:</strong>
+      <%= @feed.fetch_frequency_seconds %>
+    </li>
+  </ul>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @feed.name %>
-  </li>
-
-  <li>
-    <strong>Fetcher:</strong>
-    <%= @feed.fetcher %>
-  </li>
-
-  <li>
-    <strong>Parser:</strong>
-    <%= @feed.parser %>
-  </li>
-
-  <li>
-    <strong>Url:</strong>
-    <%= @feed.url %>
-  </li>
-
-  <li>
-    <strong>Fetched at:</strong>
-    <%= @feed.fetched_at %>
-  </li>
-
-  <li>
-    <strong>Fetch frequency seconds:</strong>
-    <%= @feed.fetch_frequency_seconds %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.feed_path(@conn, :edit, @feed) %></span> |
-<span><%= link "Back", to: Routes.feed_path(@conn, :index) %></span> |
-<span><%= link "Show Fetches", to: Routes.feed_fetch_path(@conn, :index, feed_id: @feed.id) %></span>
+  <nav class="basis-full my-6">
+    <ul class="inline-list">
+      <li>
+        <%= link "Edit", to: Routes.feed_path(@conn, :edit, @feed), class: "link-button" %> |
+      </li>
+      <li>
+        <%= link "Back", to: Routes.feed_path(@conn, :index), class: "link-button" %> |
+      </li>
+      <li>
+        <%= link "Show Fetches", to: Routes.feed_fetch_path(@conn, :index, feed_id: @feed.id), class: "link-button" %>
+      </li>
+    </ul>
+  </nav>
+</section>

@@ -98,6 +98,9 @@ defmodule ConsumeWeb do
       import ConsumeWeb.ErrorHelpers
       import ConsumeWeb.Gettext
       alias ConsumeWeb.Router.Helpers, as: Routes
+
+      # Our custom app wide view helpers
+      import ConsumeWeb.Helpers.View
     end
   end
 
