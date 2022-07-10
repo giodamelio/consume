@@ -86,7 +86,9 @@ defmodule Consume.Feeds do
 
   """
   def delete_feed(%Feed{} = feed) do
-    Repo.delete(feed)
+    feed
+    |> Feed.delete_changeset()
+    |> Repo.delete()
   end
 
   @doc """

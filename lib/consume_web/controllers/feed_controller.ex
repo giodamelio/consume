@@ -53,10 +53,20 @@ defmodule ConsumeWeb.FeedController do
 
   def delete(conn, %{"id" => id}) do
     feed = Feeds.get_feed!(id)
-    {:ok, _feed} = Feeds.delete_feed(feed)
 
-    conn
-    |> put_flash(:info, "Feed deleted successfully.")
-    |> redirect(to: Routes.feed_path(conn, :index))
+    case Feeds.delete_feed(feed) do
+      {:ok, _feed} ->
+        conn
+        |> put_flash(:info, "Feed deleted successfully.")
+        |> redirect(to: Routes.feed_path(conn, :index))
+
+      {:error, %Ecto.Changeset{} = _changeset} ->
+        conn
+        |> put_flash(
+          :error,
+          "Could not delete feed \"#{feed.name}\". Please ensure it has no Feed Fetches."
+        )
+        |> redirect(to: Routes.feed_path(conn, :index))
+    end
   end
 end
