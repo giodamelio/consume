@@ -3,23 +3,17 @@ defmodule Consume.Feeds.FetcherTest do
 
   alias Consume.Feeds.Fetcher
 
-  setup do
-    {:ok, pid} = start_supervised(Fetcher)
-    %{pid: pid}
-  end
-
   @tag :slow
-  test "doesn't tick if we don't enable it", %{pid: pid} do
+  test "doesn't tick if we don't enable it" do
     Process.sleep(2500)
-    assert :sys.get_state(pid).ticks_since_started == 0
+    assert Fetcher.ticks_since_started() == 0
   end
 
-  @tag :slow
-  test "tick two times if we wait", %{pid: pid} do
+  test "reports the enabled status" do
+    assert Fetcher.enabled?() == false
     :enabled = Fetcher.enable()
-    Process.sleep(2500)
+    assert Fetcher.enabled?() == true
     :disabled = Fetcher.disable()
-
-    assert :sys.get_state(pid).ticks_since_started == 2
+    assert Fetcher.enabled?() == false
   end
 end

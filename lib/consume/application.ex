@@ -15,9 +15,9 @@ defmodule Consume.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Consume.PubSub},
       # Start the Endpoint (http/https)
-      ConsumeWeb.Endpoint
-      # Start a worker by calling: Consume.Worker.start_link(arg)
-      # {Consume.Worker, arg}
+      ConsumeWeb.Endpoint,
+      # Start the fetcher GenServer
+      Consume.Feeds.Fetcher
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

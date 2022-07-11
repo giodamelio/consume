@@ -24,6 +24,14 @@ defmodule Consume.Feeds.Fetcher do
     GenServer.call(__MODULE__, {:set_enabled, false})
   end
 
+  def enabled?() do
+    GenServer.call(__MODULE__, {:get, :enabled})
+  end
+
+  def ticks_since_started() do
+    GenServer.call(__MODULE__, {:get, :ticks_since_started})
+  end
+
   ## GenServer callbacks
 
   def handle_call({:set_enabled, true}, _from, state) do
@@ -33,6 +41,10 @@ defmodule Consume.Feeds.Fetcher do
 
   def handle_call({:set_enabled, false}, _from, state) do
     {:reply, :disabled, %{state | enabled: false}}
+  end
+
+  def handle_call({:get, value}, _from, state) do
+    {:reply, state[value], state}
   end
 
   # Handles calling the fetcher once a second

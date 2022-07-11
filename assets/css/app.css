@@ -15,6 +15,10 @@ h2 {
   @apply font-normal text-3xl my-4;
 }
 
+h3 {
+  @apply font-normal text-2xl my-4;
+}
+
 a {
   @apply underline;
 }
@@ -54,7 +58,7 @@ label {
   @apply inline;
 }
 
-button[type=submit] {
+button {
   @apply bg-slate-600 text-white p-2 my-2 rounded-sm;
 }
 
