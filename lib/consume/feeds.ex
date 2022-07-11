@@ -22,6 +22,25 @@ defmodule Consume.Feeds do
   end
 
   @doc """
+  Returns the list feeds that are ready to be fetched
+
+  ## Examples
+
+      iex> list_fetchable_feeds()
+      [%Feed{}, ...]
+  """
+  def list_fetchable_feeds do
+    now = DateTime.utc_now()
+
+    query =
+      from feed in Feed,
+        where: is_nil(feed.fetch_after),
+        or_where: feed.fetch_after < ^now
+
+    Repo.all(query)
+  end
+
+  @doc """
   Gets a single feed.
 
   Raises `Ecto.NoResultsError` if the Feed does not exist.

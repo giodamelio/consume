@@ -22,6 +22,26 @@ defmodule Consume.FeedsTest do
       assert Feeds.list_feeds() == [feed]
     end
 
+    test "list_fetchable_feeds/0 returns feeds that have not been fetched before" do
+      never_fetched_feed = feed_fixture(%{fetch_after: nil})
+
+      assert Feeds.list_fetchable_feeds() == [never_fetched_feed]
+    end
+
+    test "list_fetchable_feeds/0 returns datetimes in the past" do
+      one_hour_ago = DateTime.now!("Etc/UTC") |> DateTime.add(-(60 * 60), :second)
+      future_feed = feed_fixture(%{fetch_after: one_hour_ago})
+
+      assert Feeds.list_fetchable_feeds() == [future_feed]
+    end
+
+    test "list_fetchable_feeds/0 doesn't return for datetimes in the future" do
+      one_hour_from_now = DateTime.now!("Etc/UTC") |> DateTime.add(60 * 60, :second)
+      _future_feed = feed_fixture(%{fetch_after: one_hour_from_now})
+
+      assert Feeds.list_fetchable_feeds() == []
+    end
+
     test "get_feed!/1 returns the feed with given id" do
       feed = feed_fixture()
       assert Feeds.get_feed!(feed.id) == feed
