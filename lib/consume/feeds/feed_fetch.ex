@@ -1,4 +1,8 @@
 defmodule Consume.Feeds.FeedFetch do
+  @moduledoc """
+  Keeps track of all our feeds
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

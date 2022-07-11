@@ -1,4 +1,7 @@
 defmodule Consume.Feeds.Feed do
+  @moduledoc """
+  Keeps track of all the times a feed has been fetched
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

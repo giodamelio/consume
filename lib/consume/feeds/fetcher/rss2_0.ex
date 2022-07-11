@@ -1,4 +1,8 @@
 defmodule Consume.Feeds.Fetcher.HTTPGet do
+  @moduledoc """
+  Simple fetcher that makes a GET request to the feeds url
+  """
+
   alias Consume.Feeds
 
   def fetch(%Feeds.Feed{} = feed) do

@@ -1,4 +1,6 @@
 defmodule ConsumeWeb.Helpers.View do
+  @moduledoc false
+
   use Phoenix.HTML
   import Phoenix.LiveView.Helpers
 

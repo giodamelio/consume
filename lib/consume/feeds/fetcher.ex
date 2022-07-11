@@ -1,4 +1,8 @@
 defmodule Consume.Feeds.Fetcher do
+  @moduledoc """
+  Handles the constant fetching of feeds
+  """
+
   use GenServer
 
   ## Client API
