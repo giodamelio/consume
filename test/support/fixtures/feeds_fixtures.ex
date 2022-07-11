@@ -12,7 +12,7 @@ defmodule Consume.FeedsFixtures do
       attrs
       |> Enum.into(%{
         fetch_frequency_seconds: 42,
-        fetched_at: ~U[2022-07-07 02:04:00Z],
+        fetch_after: ~U[2022-07-07 02:04:00Z],
         name: "some name",
         fetcher: :http_get,
         parser: :rss2_0,

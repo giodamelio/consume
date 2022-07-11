@@ -5,7 +5,7 @@ defmodule ConsumeWeb.FeedControllerTest do
 
   @create_attrs %{
     fetch_frequency_seconds: 42,
-    fetched_at: ~U[2022-07-07 14:56:00Z],
+    fetch_after: ~U[2022-07-07 14:56:00Z],
     name: "some name",
     fetcher: :http_get,
     parser: :rss2_0,
@@ -14,7 +14,7 @@ defmodule ConsumeWeb.FeedControllerTest do
   }
   @update_attrs %{
     fetch_frequency_seconds: 43,
-    fetched_at: ~U[2022-07-08 14:56:00Z],
+    fetch_after: ~U[2022-07-08 14:56:00Z],
     name: "some updated name",
     fetcher: :http_get,
     parser: :atom,
@@ -23,7 +23,7 @@ defmodule ConsumeWeb.FeedControllerTest do
   }
   @invalid_attrs %{
     fetch_frequency_seconds: nil,
-    fetched_at: nil,
+    fetch_after: nil,
     name: nil,
     fetcher: nil,
     parser: nil,

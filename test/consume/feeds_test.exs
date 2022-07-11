@@ -10,7 +10,7 @@ defmodule Consume.FeedsTest do
 
     @invalid_attrs %{
       fetch_frequency_seconds: nil,
-      fetched_at: nil,
+      fetch_after: nil,
       name: nil,
       fetcher: nil,
       parser: nil,
@@ -30,7 +30,7 @@ defmodule Consume.FeedsTest do
     test "create_feed/1 with valid data creates a feed" do
       valid_attrs = %{
         fetch_frequency_seconds: 42,
-        fetched_at: ~U[2022-07-07 02:04:00Z],
+        fetch_after: ~U[2022-07-07 02:04:00Z],
         name: "some name",
         fetcher: :http_get,
         parser: :rss2_0,
@@ -40,7 +40,7 @@ defmodule Consume.FeedsTest do
 
       assert {:ok, %Feed{} = feed} = Feeds.create_feed(valid_attrs)
       assert feed.fetch_frequency_seconds == 42
-      assert feed.fetched_at == ~U[2022-07-07 02:04:00Z]
+      assert feed.fetch_after == ~U[2022-07-07 02:04:00Z]
       assert feed.name == "some name"
       assert feed.fetcher == :http_get
       assert feed.parser == :rss2_0
@@ -56,7 +56,7 @@ defmodule Consume.FeedsTest do
 
       update_attrs = %{
         fetch_frequency_seconds: 43,
-        fetched_at: ~U[2022-07-08 02:04:00Z],
+        fetch_after: ~U[2022-07-08 02:04:00Z],
         name: "some updated name",
         fetcher: :http_get,
         parser: :jsonfeed,
@@ -65,7 +65,7 @@ defmodule Consume.FeedsTest do
 
       assert {:ok, %Feed{} = feed} = Feeds.update_feed(feed, update_attrs)
       assert feed.fetch_frequency_seconds == 43
-      assert feed.fetched_at == ~U[2022-07-08 02:04:00Z]
+      assert feed.fetch_after == ~U[2022-07-08 02:04:00Z]
       assert feed.name == "some updated name"
       assert feed.fetcher == :http_get
       assert feed.parser == :jsonfeed

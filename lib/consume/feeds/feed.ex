@@ -7,7 +7,7 @@ defmodule Consume.Feeds.Feed do
 
   schema "feeds" do
     field :fetch_frequency_seconds, :integer
-    field :fetched_at, :utc_datetime
+    field :fetch_after, :utc_datetime
     field :name, :string
     field :fetcher, Ecto.Enum, values: [:http_get]
     field :parser, Ecto.Enum, values: [:rss2_0, :atom, :jsonfeed, :youtube]
@@ -27,7 +27,7 @@ defmodule Consume.Feeds.Feed do
       :fetcher,
       :parser,
       :url,
-      :fetched_at,
+      :fetch_after,
       :fetch_frequency_seconds,
       :enabled
     ])
