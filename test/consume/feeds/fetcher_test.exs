@@ -8,11 +8,13 @@ defmodule Consume.Feeds.FetcherTest do
     %{pid: pid}
   end
 
+  @tag :slow
   test "doesn't tick if we don't enable it", %{pid: pid} do
     Process.sleep(2500)
     assert :sys.get_state(pid).ticks_since_started == 0
   end
 
+  @tag :slow
   test "tick two times if we wait", %{pid: pid} do
     :enabled = Fetcher.enable()
     Process.sleep(2500)
