@@ -34,7 +34,8 @@ defmodule Consume.FeedsTest do
         name: "some name",
         fetcher: :http_get,
         parser: :rss2_0,
-        url: "some url"
+        url: "some url",
+        enabled: false
       }
 
       assert {:ok, %Feed{} = feed} = Feeds.create_feed(valid_attrs)

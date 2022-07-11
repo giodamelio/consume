@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Enabled</th>
       <th>Fetcher</th>
       <th>Parser</th>
       <th>Url</th>
@@ -17,6 +18,7 @@
 <%= for feed <- @feeds do %>
     <tr>
       <td><%= feed.name %></td>
+      <td><%= feed.enabled %></td>
       <td><%= feed.fetcher %></td>
       <td><%= feed.parser %></td>
       <td><%= feed.url %></td>

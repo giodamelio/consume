@@ -9,7 +9,8 @@ defmodule ConsumeWeb.FeedControllerTest do
     name: "some name",
     fetcher: :http_get,
     parser: :rss2_0,
-    url: "some url"
+    url: "some url",
+    enabled: false
   }
   @update_attrs %{
     fetch_frequency_seconds: 43,
@@ -17,7 +18,8 @@ defmodule ConsumeWeb.FeedControllerTest do
     name: "some updated name",
     fetcher: :http_get,
     parser: :atom,
-    url: "some updated url"
+    url: "some updated url",
+    enabled: true
   }
   @invalid_attrs %{
     fetch_frequency_seconds: nil,
@@ -25,7 +27,8 @@ defmodule ConsumeWeb.FeedControllerTest do
     name: nil,
     fetcher: nil,
     parser: nil,
-    url: nil
+    url: nil,
+    enabled: nil
   }
 
   describe "index" do

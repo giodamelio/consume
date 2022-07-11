@@ -9,6 +9,7 @@ defmodule Consume.Feeds.Feed do
     field :fetcher, Ecto.Enum, values: [:http_get]
     field :parser, Ecto.Enum, values: [:rss2_0, :atom, :jsonfeed, :youtube]
     field :url, :string
+    field :enabled, :boolean
 
     has_many :feed_fetches, Consume.Feeds.FeedFetch
 
@@ -18,8 +19,16 @@ defmodule Consume.Feeds.Feed do
   @doc false
   def changeset(feed, attrs) do
     feed
-    |> cast(attrs, [:name, :fetcher, :parser, :url, :fetched_at, :fetch_frequency_seconds])
-    |> validate_required([:name, :fetcher, :parser, :url, :fetch_frequency_seconds])
+    |> cast(attrs, [
+      :name,
+      :fetcher,
+      :parser,
+      :url,
+      :fetched_at,
+      :fetch_frequency_seconds,
+      :enabled
+    ])
+    |> validate_required([:name, :fetcher, :parser, :url, :fetch_frequency_seconds, :enabled])
   end
 
   @doc false

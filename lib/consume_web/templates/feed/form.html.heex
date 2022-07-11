@@ -9,6 +9,10 @@
   <%= text_input f, :name %>
   <%= error_tag f, :name %>
 
+  <%= label f, :enabled %>
+  <%= checkbox f, :enabled %>
+  <%= error_tag f, :enabled %>
+
   <%= label f, :fetcher %>
   <%= select f, :fetcher, Ecto.Enum.values(Consume.Feeds.Feed, :fetcher), prompt: "Choose a value" %>
   <%= error_tag f, :fetcher %>
