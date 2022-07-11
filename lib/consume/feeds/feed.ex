@@ -19,7 +19,7 @@ defmodule Consume.Feeds.Feed do
   def changeset(feed, attrs) do
     feed
     |> cast(attrs, [:name, :fetcher, :parser, :url, :fetched_at, :fetch_frequency_seconds])
-    |> validate_required([:name, :fetcher, :parser, :url, :fetched_at, :fetch_frequency_seconds])
+    |> validate_required([:name, :fetcher, :parser, :url, :fetch_frequency_seconds])
   end
 
   @doc false
