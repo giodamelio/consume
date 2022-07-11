@@ -11,6 +11,10 @@ h1 {
   @apply font-normal text-4xl my-4;
 }
 
+h2 {
+  @apply font-normal text-3xl my-4;
+}
+
 a {
   @apply underline;
 }

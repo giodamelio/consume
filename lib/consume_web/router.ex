@@ -17,7 +17,7 @@ defmodule ConsumeWeb.Router do
   scope "/", ConsumeWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", PageLive
 
     resources "/feeds", FeedController
     resources "/feed_fetches", FeedFetchController
