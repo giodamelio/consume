@@ -51,9 +51,11 @@ defmodule Consume.Feeds.Fetcher do
   def handle_info(:tick, state) do
     if state.enabled do
       timer()
-    end
 
-    {:noreply, %{state | ticks_since_started: state.ticks_since_started + 1}}
+      {:noreply, %{state | ticks_since_started: state.ticks_since_started + 1}}
+    else
+      {:noreply, state}
+    end
   end
 
   def init(args) do
