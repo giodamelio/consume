@@ -27,6 +27,7 @@ defmodule ConsumeWeb.PageLive do
         <% end %>
         <li><%= link "Feeds", to: Routes.feed_path(@socket, :index) %></li>
         <li><%= link "Feed Fetches", to: Routes.feed_fetch_path(@socket, :index) %></li>
+        <li><%= link "Feed Fetches Data", to: Routes.feed_fetch_data_path(@socket, :index) %></li>
       </ul>
     </section>
 
