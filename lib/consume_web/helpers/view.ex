@@ -18,4 +18,10 @@ defmodule ConsumeWeb.Helpers.View do
 
     datetime_select(form, field, [builder: builder] ++ opts)
   end
+
+  def truncate(string) do
+    (string
+     |> String.slice(0, 20)
+     |> String.trim()) <> "..."
+  end
 end
