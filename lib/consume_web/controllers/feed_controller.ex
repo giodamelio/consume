@@ -64,7 +64,7 @@ defmodule ConsumeWeb.FeedController do
         conn
         |> put_flash(
           :error,
-          "Could not delete feed \"#{feed.name}\". Please ensure it has no Feed Fetches."
+          "Could not delete feed \"#{feed.name}\". Please ensure it has no Feed Fetches or Feed Fetch Data."
         )
         |> redirect(to: Routes.feed_path(conn, :index))
     end

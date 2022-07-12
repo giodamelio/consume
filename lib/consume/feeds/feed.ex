@@ -15,6 +15,7 @@ defmodule Consume.Feeds.Feed do
     field :enabled, :boolean
 
     has_many :feed_fetches, Consume.Feeds.FeedFetch
+    has_many :feed_fetch_data, Consume.Feeds.FeedFetchData
 
     timestamps()
   end
@@ -39,5 +40,6 @@ defmodule Consume.Feeds.Feed do
     feed
     |> change()
     |> no_assoc_constraint(:feed_fetches)
+    |> no_assoc_constraint(:feed_fetch_data)
   end
 end
