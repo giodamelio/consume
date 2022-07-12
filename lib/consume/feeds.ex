@@ -21,6 +21,14 @@ defmodule Consume.Feeds do
     Repo.all(Feed)
   end
 
+  defp fetchable_feeds() do
+    now = DateTime.utc_now()
+
+    from feed in Feed,
+      where: is_nil(feed.fetch_after),
+      or_where: feed.fetch_after < ^now
+  end
+
   @doc """
   Returns the list feeds that are ready to be fetched
 
@@ -30,14 +38,7 @@ defmodule Consume.Feeds do
       [%Feed{}, ...]
   """
   def list_fetchable_feeds do
-    now = DateTime.utc_now()
-
-    query =
-      from feed in Feed,
-        where: is_nil(feed.fetch_after),
-        or_where: feed.fetch_after < ^now
-
-    Repo.all(query)
+    Repo.all(fetchable_feeds())
   end
 
   @doc """
