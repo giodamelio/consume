@@ -34,7 +34,7 @@ defmodule Consume.Feeds.Fetcher.HTTPGetTest do
   describe "save_fetch/2" do
     test "save an example fetch feed" do
       feed = feed_fixture()
-      {:ok, new_feed_fetch} = HTTPGet.save_fetch(feed.id, "Hello World!")
+      {:ok, new_feed_fetch} = HTTPGet.save_fetch(feed, "Hello World!")
 
       assert new_feed_fetch.feed_id == feed.id
       assert new_feed_fetch.data == "Hello World!"

@@ -5,6 +5,9 @@ defmodule Consume.Feeds.Fetcher do
 
   use GenServer
 
+  alias Consume.Feeds
+  alias Consume.Feeds.Fetcher
+
   ## Client API
 
   def start_link(opts \\ []) do
@@ -50,6 +53,13 @@ defmodule Consume.Feeds.Fetcher do
   # Handles calling the fetcher once a second
   def handle_info(:tick, state) do
     if state.enabled do
+      Task.start(fn ->
+        case Feeds.list_fetchable_feeds() do
+          [] -> :ok
+          [feed | _tail] -> fetch(feed)
+        end
+      end)
+
       timer()
 
       {:noreply, %{state | ticks_since_started: state.ticks_since_started + 1}}
@@ -65,5 +75,12 @@ defmodule Consume.Feeds.Fetcher do
   # Send a message to self() in 1 second
   defp timer() do
     Process.send_after(self(), :tick, 1_000)
+  end
+
+  def fetch(%Feeds.Feed{} = feed) do
+    case feed.fetcher do
+      :http_get -> Fetcher.HTTPGet.fetch(feed)
+      _ -> raise "Fetcher '#{feed.fetcher}' is not implemented"
+    end
   end
 end
