@@ -5,13 +5,13 @@
     </div>
   <% end %>
 
+  <%= label f, :feed_id %>
+  <%= text_input f, :feed_id %>
+  <%= error_tag f, :feed_id %>
+
   <%= label f, :data %>
   <%= text_input f, :data %>
   <%= error_tag f, :data %>
-
-  <%= label f, :sha256 %>
-  <%= text_input f, :sha256 %>
-  <%= error_tag f, :sha256 %>
 
   <div>
     <%= submit "Save" %>

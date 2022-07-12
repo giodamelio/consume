@@ -1,18 +1,31 @@
-<h1>Show Feed fetch data</h1>
+<section class="flex flex-row flex-wrap">
+  <h1 class="basis-full">Show Feed fetch data</h1>
 
-<ul>
+  <ul class="basis-full">
+    <li>
+      <strong>Feed:</strong>
+      <%= link @feed_fetch_data.feed_id, to: Routes.feed_path(@conn, :show, @feed_fetch_data.feed_id) %>
+    </li>
 
-  <li>
-    <strong>Data:</strong>
-    <%= @feed_fetch_data.data %>
-  </li>
+    <li>
+      <strong>Data:</strong>
+      <%= @feed_fetch_data.data %>
+    </li>
 
-  <li>
-    <strong>Sha256:</strong>
-    <%= @feed_fetch_data.sha256 %>
-  </li>
+    <li>
+      <strong>Sha256:</strong>
+      <%= @feed_fetch_data.sha256 %>
+    </li>
+  </ul>
 
-</ul>
-
-<span><%= link "Edit", to: Routes.feed_fetch_data_path(@conn, :edit, @feed_fetch_data) %></span> |
-<span><%= link "Back", to: Routes.feed_fetch_data_path(@conn, :index) %></span>
+  <nav class="basis-full my-6">
+    <ul class="inline-list">
+      <li>
+        <%= link "Edit", to: Routes.feed_fetch_data_path(@conn, :edit, @feed_fetch_data) %> |
+      </li>
+      <li>
+        <%= link "Back", to: Routes.feed_fetch_data_path(@conn, :index) %>
+      </li>
+    </ul>
+  </nav>
+</section>
