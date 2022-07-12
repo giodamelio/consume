@@ -104,6 +104,24 @@ defmodule Consume.FeedsTest do
       assert_raise Ecto.NoResultsError, fn -> Feeds.get_feed!(feed.id) end
     end
 
+    test "delete_feed/1 cannot delete if a feed_fetches exists that belongs to it" do
+      feed = feed_fixture()
+      _feed_fetch = feed_fetch_fixture(feed_id: feed.id)
+
+      {:error, %Ecto.Changeset{errors: errors}} = Feeds.delete_feed(feed)
+      error_name = errors |> Keyword.fetch!(:feed_fetches) |> elem(0)
+      assert error_name == "are still associated with this entry"
+    end
+
+    test "delete_feed/1 cannot delete if a feed_fetch_data exists that belongs to it" do
+      feed = feed_fixture()
+      _feed_fetch_data = feed_fetch_data_fixture(feed_id: feed.id)
+
+      {:error, %Ecto.Changeset{errors: errors}} = Feeds.delete_feed(feed)
+      error_name = errors |> Keyword.fetch!(:feed_fetch_data) |> elem(0)
+      assert error_name == "are still associated with this entry"
+    end
+
     test "change_feed/1 returns a feed changeset" do
       feed = feed_fixture()
       assert %Ecto.Changeset{} = Feeds.change_feed(feed)
