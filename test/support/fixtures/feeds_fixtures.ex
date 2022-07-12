@@ -40,4 +40,19 @@ defmodule Consume.FeedsFixtures do
 
     feed_fetch
   end
+
+  @doc """
+  Generate a feed_fetch_data.
+  """
+  def feed_fetch_data_fixture(attrs \\ %{}) do
+    {:ok, feed_fetch_data} =
+      attrs
+      |> Enum.into(%{
+        data: "some data",
+        sha256: "some sha256"
+      })
+      |> Consume.Feeds.create_feed_fetch_data()
+
+    feed_fetch_data
+  end
 end

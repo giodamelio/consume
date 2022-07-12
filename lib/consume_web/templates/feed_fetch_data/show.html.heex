@@ -1,0 +1,18 @@
+<h1>Show Feed fetch data</h1>
+
+<ul>
+
+  <li>
+    <strong>Data:</strong>
+    <%= @feed_fetch_data.data %>
+  </li>
+
+  <li>
+    <strong>Sha256:</strong>
+    <%= @feed_fetch_data.sha256 %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.feed_fetch_data_path(@conn, :edit, @feed_fetch_data) %></span> |
+<span><%= link "Back", to: Routes.feed_fetch_data_path(@conn, :index) %></span>

@@ -232,4 +232,100 @@ defmodule Consume.Feeds do
   def change_feed_fetch(%FeedFetch{} = feed_fetch, attrs \\ %{}) do
     FeedFetch.changeset(feed_fetch, attrs)
   end
+
+  alias Consume.Feeds.FeedFetchData
+
+  @doc """
+  Returns the list of feed_fetch_data.
+
+  ## Examples
+
+      iex> list_feed_fetch_data()
+      [%FeedFetchData{}, ...]
+
+  """
+  def list_feed_fetch_data do
+    Repo.all(FeedFetchData)
+  end
+
+  @doc """
+  Gets a single feed_fetch_data.
+
+  Raises `Ecto.NoResultsError` if the Feed fetch data does not exist.
+
+  ## Examples
+
+      iex> get_feed_fetch_data!(123)
+      %FeedFetchData{}
+
+      iex> get_feed_fetch_data!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_feed_fetch_data!(id), do: Repo.get!(FeedFetchData, id)
+
+  @doc """
+  Creates a feed_fetch_data.
+
+  ## Examples
+
+      iex> create_feed_fetch_data(%{field: value})
+      {:ok, %FeedFetchData{}}
+
+      iex> create_feed_fetch_data(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_feed_fetch_data(attrs \\ %{}) do
+    %FeedFetchData{}
+    |> FeedFetchData.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a feed_fetch_data.
+
+  ## Examples
+
+      iex> update_feed_fetch_data(feed_fetch_data, %{field: new_value})
+      {:ok, %FeedFetchData{}}
+
+      iex> update_feed_fetch_data(feed_fetch_data, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_feed_fetch_data(%FeedFetchData{} = feed_fetch_data, attrs) do
+    feed_fetch_data
+    |> FeedFetchData.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a feed_fetch_data.
+
+  ## Examples
+
+      iex> delete_feed_fetch_data(feed_fetch_data)
+      {:ok, %FeedFetchData{}}
+
+      iex> delete_feed_fetch_data(feed_fetch_data)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_feed_fetch_data(%FeedFetchData{} = feed_fetch_data) do
+    Repo.delete(feed_fetch_data)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking feed_fetch_data changes.
+
+  ## Examples
+
+      iex> change_feed_fetch_data(feed_fetch_data)
+      %Ecto.Changeset{data: %FeedFetchData{}}
+
+  """
+  def change_feed_fetch_data(%FeedFetchData{} = feed_fetch_data, attrs \\ %{}) do
+    FeedFetchData.changeset(feed_fetch_data, attrs)
+  end
 end

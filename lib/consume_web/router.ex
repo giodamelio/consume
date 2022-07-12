@@ -21,6 +21,7 @@ defmodule ConsumeWeb.Router do
 
     resources "/feeds", FeedController
     resources "/feed_fetches", FeedFetchController
+    resources "/feed_fetch_data", FeedFetchDataController
   end
 
   # Other scopes may use custom stacks.

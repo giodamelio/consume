@@ -183,4 +183,65 @@ defmodule Consume.FeedsTest do
       assert %Ecto.Changeset{} = Feeds.change_feed_fetch(feed_fetch)
     end
   end
+
+  describe "feed_fetch_data" do
+    alias Consume.Feeds.FeedFetchData
+
+    import Consume.FeedsFixtures
+
+    @invalid_attrs %{data: nil, sha256: nil}
+
+    test "list_feed_fetch_data/0 returns all feed_fetch_data" do
+      feed_fetch_data = feed_fetch_data_fixture()
+      assert Feeds.list_feed_fetch_data() == [feed_fetch_data]
+    end
+
+    test "get_feed_fetch_data!/1 returns the feed_fetch_data with given id" do
+      feed_fetch_data = feed_fetch_data_fixture()
+      assert Feeds.get_feed_fetch_data!(feed_fetch_data.id) == feed_fetch_data
+    end
+
+    test "create_feed_fetch_data/1 with valid data creates a feed_fetch_data" do
+      valid_attrs = %{data: "some data", sha256: "some sha256"}
+
+      assert {:ok, %FeedFetchData{} = feed_fetch_data} = Feeds.create_feed_fetch_data(valid_attrs)
+      assert feed_fetch_data.data == "some data"
+      assert feed_fetch_data.sha256 == "some sha256"
+    end
+
+    test "create_feed_fetch_data/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Feeds.create_feed_fetch_data(@invalid_attrs)
+    end
+
+    test "update_feed_fetch_data/2 with valid data updates the feed_fetch_data" do
+      feed_fetch_data = feed_fetch_data_fixture()
+      update_attrs = %{data: "some updated data", sha256: "some updated sha256"}
+
+      assert {:ok, %FeedFetchData{} = feed_fetch_data} =
+               Feeds.update_feed_fetch_data(feed_fetch_data, update_attrs)
+
+      assert feed_fetch_data.data == "some updated data"
+      assert feed_fetch_data.sha256 == "some updated sha256"
+    end
+
+    test "update_feed_fetch_data/2 with invalid data returns error changeset" do
+      feed_fetch_data = feed_fetch_data_fixture()
+
+      assert {:error, %Ecto.Changeset{}} =
+               Feeds.update_feed_fetch_data(feed_fetch_data, @invalid_attrs)
+
+      assert feed_fetch_data == Feeds.get_feed_fetch_data!(feed_fetch_data.id)
+    end
+
+    test "delete_feed_fetch_data/1 deletes the feed_fetch_data" do
+      feed_fetch_data = feed_fetch_data_fixture()
+      assert {:ok, %FeedFetchData{}} = Feeds.delete_feed_fetch_data(feed_fetch_data)
+      assert_raise Ecto.NoResultsError, fn -> Feeds.get_feed_fetch_data!(feed_fetch_data.id) end
+    end
+
+    test "change_feed_fetch_data/1 returns a feed_fetch_data changeset" do
+      feed_fetch_data = feed_fetch_data_fixture()
+      assert %Ecto.Changeset{} = Feeds.change_feed_fetch_data(feed_fetch_data)
+    end
+  end
 end

@@ -1,0 +1,28 @@
+<h1>Listing Feed fetch data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Sha256</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for feed_fetch_data <- @feed_fetch_data do %>
+    <tr>
+      <td><%= feed_fetch_data.data %></td>
+      <td><%= feed_fetch_data.sha256 %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.feed_fetch_data_path(@conn, :show, feed_fetch_data) %></span>
+        <span><%= link "Edit", to: Routes.feed_fetch_data_path(@conn, :edit, feed_fetch_data) %></span>
+        <span><%= link "Delete", to: Routes.feed_fetch_data_path(@conn, :delete, feed_fetch_data), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Feed fetch data", to: Routes.feed_fetch_data_path(@conn, :new) %></span>
