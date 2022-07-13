@@ -290,7 +290,7 @@ defmodule Consume.Feeds do
     |> FeedFetchData.changeset(attrs)
     |> Repo.insert(
       on_conflict: [set: [updated_at: DateTime.utc_now()]],
-      conflict_target: [:feed_id, :data, :sha256]
+      conflict_target: [:feed_id, :sha256]
     )
   end
 
