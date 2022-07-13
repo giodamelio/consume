@@ -14,7 +14,7 @@
 <%= for feed_fetch_data <- @feed_fetch_data do %>
     <tr>
       <td><%= link feed_fetch_data.feed_id, to: Routes.feed_path(@conn, :show, feed_fetch_data.feed_id) %></td>
-      <td><%= feed_fetch_data.data %></td>
+      <td><%= truncate(feed_fetch_data.data) %></td>
       <td><%= feed_fetch_data.sha256 %></td>
 
       <td>
