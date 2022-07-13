@@ -283,6 +283,18 @@ defmodule Consume.Feeds do
   end
 
   @doc """
+  Create a feed_fetch_data unless an identical one already exists
+  """
+  def upsert_feed_fetch_data(attrs \\ %{}) do
+    %FeedFetchData{}
+    |> FeedFetchData.changeset(attrs)
+    |> Repo.insert(
+      on_conflict: [set: [updated_at: DateTime.utc_now()]],
+      conflict_target: [:feed_id, :data, :sha256]
+    )
+  end
+
+  @doc """
   Updates a feed_fetch_data.
 
   ## Examples

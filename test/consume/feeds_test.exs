@@ -234,6 +234,31 @@ defmodule Consume.FeedsTest do
       assert {:error, %Ecto.Changeset{}} = Feeds.create_feed_fetch_data(@invalid_attrs)
     end
 
+    test "upsert_feed_fetch_data/1 with valid data creates a feed_fetch_data" do
+      feed = feed_fixture()
+      valid_attrs = %{data: "some data", feed_id: feed.id}
+
+      assert {:ok, %FeedFetchData{} = feed_fetch_data} = Feeds.upsert_feed_fetch_data(valid_attrs)
+
+      assert feed_fetch_data.data == "some data"
+
+      assert feed_fetch_data.sha256 ==
+               "1307990E6BA5CA145EB35E99182A9BEC46531BC54DDF656A602C780FA0240DEE"
+    end
+
+    test "upsert_feed_fetch_data/1 returns original feed_fetch_data on duplicate" do
+      feed = feed_fixture()
+      valid_attrs = %{data: "some data", feed_id: feed.id}
+
+      assert {:ok, %FeedFetchData{} = feed_fetch_data} = Feeds.upsert_feed_fetch_data(valid_attrs)
+
+      assert {:ok, %FeedFetchData{} = feed_fetch_data_2} =
+               Feeds.upsert_feed_fetch_data(valid_attrs)
+
+      assert feed_fetch_data.id == feed_fetch_data_2.id
+      assert feed_fetch_data.updated_at == feed_fetch_data_2.updated_at
+    end
+
     test "update_feed_fetch_data/2 with valid data updates the feed_fetch_data" do
       feed_fetch_data = feed_fetch_data_fixture()
       update_attrs = %{data: "some updated data"}
