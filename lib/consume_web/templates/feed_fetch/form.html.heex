@@ -9,15 +9,9 @@
   <%= text_input f, :feed_id %>
   <%= error_tag f, :feed_id %>
 
-  <%= label f, :data %>
-  <%= text_input f, :data %>
-  <%= error_tag f, :data %>
-
-  <%= if @type == :update do %>
-  <%= label f, :sha256 %>
-  <%= text_input f, :sha256, disabled: true %>
-  <%= error_tag f, :sha256 %>
-  <% end %>
+  <%= label f, :feed_fetch_data_id %>
+  <%= text_input f, :feed_fetch_data_id %>
+  <%= error_tag f, :feed_fetch_data_id %>
 
   <div>
     <%= submit "Save" %>

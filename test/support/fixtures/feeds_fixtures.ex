@@ -29,12 +29,13 @@ defmodule Consume.FeedsFixtures do
   """
   def feed_fetch_fixture(attrs \\ %{}) do
     feed = feed_fixture()
+    feed_fetch_data = feed_fetch_data_fixture()
 
     {:ok, feed_fetch} =
       attrs
       |> Enum.into(%{
         feed_id: feed.id,
-        data: "some data"
+        feed_fetch_data_id: feed_fetch_data.id
       })
       |> Consume.Feeds.create_feed_fetch()
 

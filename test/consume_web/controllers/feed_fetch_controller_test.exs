@@ -3,9 +3,9 @@ defmodule ConsumeWeb.FeedFetchControllerTest do
 
   import Consume.FeedsFixtures
 
-  @create_attrs %{data: "some data"}
-  @update_attrs %{data: "some updated data"}
-  @invalid_attrs %{data: nil}
+  @create_attrs %{}
+  @update_attrs %{}
+  @invalid_attrs %{feed_id: nil}
 
   describe "index" do
     test "lists all feed_fetches", %{conn: conn} do
@@ -24,10 +24,14 @@ defmodule ConsumeWeb.FeedFetchControllerTest do
   describe "create feed_fetch" do
     test "redirects to show when data is valid", %{conn: conn} do
       feed = feed_fixture()
+      feed_fetch_data = feed_fetch_data_fixture()
 
       conn =
         post(conn, Routes.feed_fetch_path(conn, :create),
-          feed_fetch: Map.put(@create_attrs, :feed_id, feed.id)
+          feed_fetch:
+            @create_attrs
+            |> Map.put(:feed_id, feed.id)
+            |> Map.put(:feed_fetch_data_id, feed_fetch_data.id)
         )
 
       assert %{id: id} = redirected_params(conn)
@@ -63,8 +67,7 @@ defmodule ConsumeWeb.FeedFetchControllerTest do
 
       conn = get(conn, Routes.feed_fetch_path(conn, :show, feed_fetch))
 
-      assert html_response(conn, 200) =~
-               "F47C56E3430C735356CBB66685B6F15425178E47420046E11824391EF4F7FBC1"
+      assert html_response(conn, 200) =~ to_string(feed_fetch.feed_id)
     end
 
     test "renders errors when data is invalid", %{conn: conn, feed_fetch: feed_fetch} do

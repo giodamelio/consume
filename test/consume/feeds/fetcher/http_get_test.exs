@@ -37,10 +37,6 @@ defmodule Consume.Feeds.Fetcher.HTTPGetTest do
       {:ok, new_feed_fetch} = HTTPGet.save_fetch(feed, "Hello World!")
 
       assert new_feed_fetch.feed_id == feed.id
-      assert new_feed_fetch.data == "Hello World!"
-
-      assert new_feed_fetch.sha256 ==
-               "7F83B1657FF1FC53B92DC18148A1D65DFC2D4B1FA3D677284ADDD200126D9069"
     end
   end
 end
