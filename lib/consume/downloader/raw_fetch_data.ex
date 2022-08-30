@@ -14,5 +14,6 @@ defmodule Consume.Downloader.RawFetchData do
     raw_fetch_data
     |> cast(attrs, [:hash, :data])
     |> validate_required([:hash, :data])
+    |> unique_constraint(:hash)
   end
 end

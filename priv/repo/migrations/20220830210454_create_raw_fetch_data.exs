@@ -8,5 +8,7 @@ defmodule Consume.Repo.Migrations.CreateRawFetchData do
 
       timestamps()
     end
+
+    create unique_index(:raw_fetch_data, [:hash])
   end
 end
