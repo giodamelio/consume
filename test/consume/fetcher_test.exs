@@ -5,6 +5,9 @@ defmodule Consume.FetcherTest do
     @behaviour Consume.Fetcher
 
     @impl true
+    def name(), do: "constant"
+
+    @impl true
     def fetch(_uri) do
       data = "Hello World!"
       hash = :crypto.hash(:sha256, data)

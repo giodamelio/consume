@@ -4,6 +4,10 @@ defmodule Consume.Fetcher.HttpGetFetcherTest do
   alias Consume.Fetcher.HttpGetFetcher
   import Tesla.Mock
 
+  test "correctly implements Consume.Fetcher.name" do
+    assert HttpGetFetcher.name() == "http_get"
+  end
+
   test "correctly implements Consume.Fetcher.fetch" do
     mock(fn _req ->
       %Tesla.Env{

@@ -14,6 +14,11 @@ defmodule Consume.Fetcher do
   @type uri :: binary()
 
   @doc """
+  Returns a string representation of the fetchers name.
+  """
+  @callback name() :: String.t()
+
+  @doc """
   Fetches a resource and returns the binary representation of it alongside it's hash.
   """
   @callback fetch(uri) :: {:ok, {hash, binary()}} | {:error, String.t()}

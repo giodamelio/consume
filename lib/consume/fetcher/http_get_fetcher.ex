@@ -2,6 +2,9 @@ defmodule Consume.Fetcher.HttpGetFetcher do
   @behaviour Consume.Fetcher
 
   @impl true
+  def name(), do: "http_get"
+
+  @impl true
   def fetch(uri) do
     case Tesla.get(uri) do
       {:ok, response} ->
