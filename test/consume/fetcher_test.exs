@@ -1,6 +1,24 @@
 defmodule Consume.FetcherTest do
   use ExUnit.Case
 
+  alias Consume.Fetcher
+
+  # Read the registered modules to ensure that the list_fetchers/0 is kept up to date when new fetchers are added
+  test "properly lists the available fetchers" do
+    fetcher_modules =
+      with {:ok, all_modules} <- :application.get_key(:consume, :modules) do
+        all_modules
+        |> Enum.filter(fn m ->
+          case Module.split(m) do
+            ["Consume", "Fetcher", name] -> name
+            _ -> false
+          end
+        end)
+      end
+
+    assert length(Fetcher.list_fetchers()) == length(fetcher_modules)
+  end
+
   defmodule ConstantFetcher do
     @behaviour Consume.Fetcher
 

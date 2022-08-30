@@ -27,4 +27,8 @@ defmodule Consume.Fetcher do
   Validates that the uri is valid for this fetcher.
   """
   @callback valid_id?(uri) :: boolean()
+
+  def list_fetchers() do
+    [Consume.Fetcher.HttpGetFetcher]
+  end
 end
