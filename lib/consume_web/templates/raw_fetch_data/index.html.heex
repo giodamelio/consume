@@ -1,0 +1,28 @@
+<h1>Listing Raw fetch data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hash</th>
+      <th>Data</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for raw_fetch_data <- @raw_fetch_data do %>
+    <tr>
+      <td><%= raw_fetch_data.hash %></td>
+      <td><%= raw_fetch_data.data %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.raw_fetch_data_path(@conn, :show, raw_fetch_data) %></span>
+        <span><%= link "Edit", to: Routes.raw_fetch_data_path(@conn, :edit, raw_fetch_data) %></span>
+        <span><%= link "Delete", to: Routes.raw_fetch_data_path(@conn, :delete, raw_fetch_data), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Raw fetch data", to: Routes.raw_fetch_data_path(@conn, :new) %></span>

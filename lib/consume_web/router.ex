@@ -18,6 +18,7 @@ defmodule ConsumeWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/raw_fetch_data", RawFetchDataController
   end
 
   # Other scopes may use custom stacks.

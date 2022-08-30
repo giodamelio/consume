@@ -1,0 +1,5 @@
+<h1>Edit Raw fetch data</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.raw_fetch_data_path(@conn, :update, @raw_fetch_data)) %>
+
+<span><%= link "Back", to: Routes.raw_fetch_data_path(@conn, :index) %></span>
