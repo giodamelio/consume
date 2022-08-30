@@ -31,4 +31,7 @@ defmodule Consume.Fetcher do
   def list_fetchers() do
     [Consume.Fetcher.HttpGetFetcher]
   end
+
+  def get_fetcher("http_get"), do: {:ok, Consume.Fetcher.HttpGetFetcher}
+  def get_fetcher(name), do: {:error, "Fetcher #{name} not found"}
 end

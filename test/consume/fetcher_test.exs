@@ -3,20 +3,27 @@ defmodule Consume.FetcherTest do
 
   alias Consume.Fetcher
 
+  def fetcher_modules do
+    with {:ok, all_modules} <- :application.get_key(:consume, :modules) do
+      all_modules
+      |> Enum.filter(fn m ->
+        case Module.split(m) do
+          ["Consume", "Fetcher", name] -> name
+          _ -> false
+        end
+      end)
+    end
+  end
+
   # Read the registered modules to ensure that the list_fetchers/0 is kept up to date when new fetchers are added
   test "properly lists the available fetchers" do
-    fetcher_modules =
-      with {:ok, all_modules} <- :application.get_key(:consume, :modules) do
-        all_modules
-        |> Enum.filter(fn m ->
-          case Module.split(m) do
-            ["Consume", "Fetcher", name] -> name
-            _ -> false
-          end
-        end)
-      end
+    assert length(Fetcher.list_fetchers()) == length(fetcher_modules())
+  end
 
-    assert length(Fetcher.list_fetchers()) == length(fetcher_modules)
+  test "can get fetcher by name" do
+    for fetcher <- fetcher_modules() do
+      assert Fetcher.get_fetcher(fetcher.name()) == {:ok, fetcher}
+    end
   end
 
   defmodule ConstantFetcher do

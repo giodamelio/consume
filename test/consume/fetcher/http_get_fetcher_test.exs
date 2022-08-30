@@ -8,6 +8,10 @@ defmodule Consume.Fetcher.HttpGetFetcherTest do
     assert HttpGetFetcher.name() == "http_get"
   end
 
+  test "can get fetcher by name" do
+    assert Consume.Fetcher.get_fetcher("http_get") == {:ok, HttpGetFetcher}
+  end
+
   test "correctly implements Consume.Fetcher.fetch" do
     mock(fn _req ->
       %Tesla.Env{
