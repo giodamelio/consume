@@ -12,10 +12,10 @@
 
   <div class="field is-grouped">
     <div class="control">
-      <%= link "Back", class: "button", to: Routes.raw_fetch_data_path(@conn, :index) %>
+      <%= BulmaForm.button_link "Back", Routes.raw_fetch_data_path(@conn, :index) %>
     </div>
     <div class="control">
-      <%= BulmaForm.submit "Save" %>
+      <%= BulmaForm.submit "Save", :primary %>
     </div>
   </div>
 </.form>
