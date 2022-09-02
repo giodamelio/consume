@@ -16,19 +16,40 @@ defmodule ConsumeWeb.Helpers.Form do
     """
   end
 
-  def button_link(text, path) do
-    HTML.Link.link(text, class: "button", to: path)
+  def button_link(text, path, opts \\ []) do
+    classes = [
+      "button"
+    ]
+
+    classes =
+      if opts[:color] do
+        classes ++ ["is-#{opts[:color]}"]
+      else
+        classes
+      end
+
+    classes =
+      if opts[:size] do
+        classes ++ ["is-#{opts[:size]}"]
+      else
+        classes
+      end
+
+    HTML.Link.link(text, opts ++ [class: classes, to: path])
   end
 
-  def button_link(text, color, path) do
-    HTML.Link.link(text, class: ["button", "is-#{color}"], to: path)
-  end
+  def submit(text, opts \\ []) do
+    classes = [
+      "button"
+    ]
 
-  def submit(text) do
-    HTML.Form.submit(text, class: "button")
-  end
+    classes =
+      if opts[:color] do
+        classes ++ ["is-#{opts[:color]}"]
+      else
+        classes
+      end
 
-  def submit(text, color) do
-    HTML.Form.submit(text, class: "button is-#{color}")
+    HTML.Form.submit(text, opts ++ [class: classes])
   end
 end

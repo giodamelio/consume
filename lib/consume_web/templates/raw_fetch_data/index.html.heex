@@ -1,6 +1,8 @@
 <h1 class="title">Listing Raw Fetch Data</h1>
 
-<span class="is-pulled-right"><%= link "New Raw Fetch Data", class: "button is-primary", to: Routes.raw_fetch_data_path(@conn, :new) %></span>
+<span class="is-pulled-right">
+  <%= BulmaForm.button_link "New Raw Fetch Data", Routes.raw_fetch_data_path(@conn, :new), color: :primary %>
+</span>
 
 <table class="table is-striped is-fullwidth">
   <thead>
@@ -18,9 +20,15 @@
       <td><%= raw_fetch_data.data %></td>
       <td>
         <div class="buttons has-addons is-right">
-          <%= link "Show", class: "button is-small", to: Routes.raw_fetch_data_path(@conn, :show, raw_fetch_data) %>
-          <%= link "Edit", class: "button is-small", to: Routes.raw_fetch_data_path(@conn, :edit, raw_fetch_data) %>
-          <%= link "Delete", class: "button is-small is-danger", to: Routes.raw_fetch_data_path(@conn, :delete, raw_fetch_data), method: :delete, data: [confirm: "Are you sure?"] %>
+          <%= BulmaForm.button_link "Show", Routes.raw_fetch_data_path(@conn, :show, raw_fetch_data), size: :small %>
+          <%= BulmaForm.button_link "Edit", Routes.raw_fetch_data_path(@conn, :edit, raw_fetch_data), size: :small %>
+          <%= BulmaForm.button_link "Delete",
+            Routes.raw_fetch_data_path(@conn, :delete, raw_fetch_data),
+            color: :danger,
+            size: :small,
+            method: :delete,
+            data: [confirm: "Are you sure?"]
+          %>
         </div>
       </td>
     </tr>

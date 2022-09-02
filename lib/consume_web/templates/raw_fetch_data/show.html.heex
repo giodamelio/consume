@@ -14,6 +14,6 @@
 </div>
 
 <div class="block buttons is-grouped">
-  <%= link "Edit", class: "button", to: Routes.raw_fetch_data_path(@conn, :edit, @raw_fetch_data) %>
-  <%= link "Back", class: "button", to: Routes.raw_fetch_data_path(@conn, :index) %>
+  <%= BulmaForm.button_link "Edit", Routes.raw_fetch_data_path(@conn, :edit, @raw_fetch_data) %>
+  <%= BulmaForm.button_link "Back", Routes.raw_fetch_data_path(@conn, :index) %>
 </div>
