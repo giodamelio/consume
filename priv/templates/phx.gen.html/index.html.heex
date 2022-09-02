@@ -1,0 +1,37 @@
+<h1 class="title">Listing <%= schema.human_plural %></h1>
+
+<span class="is-pulled-right">
+  <%%= BulmaForm.button_link "New <%= schema.human_singular %>", Routes.<%= schema.route_helper %>_path(@conn, :new), color: :primary %>
+</span>
+
+<table class="table is-striped is-fullwidth">
+  <thead>
+    <tr>
+<%= for {k, _} <- schema.attrs do %>      <th><%= Phoenix.Naming.humanize(Atom.to_string(k)) %></th>
+<% end %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%%= for <%= schema.singular %> <- @<%= schema.plural %> do %>
+    <tr>
+<%= for {k, _} <- schema.attrs do %>      <td><%%= <%= schema.singular %>.<%= k %> %></td>
+<% end %>
+      <td>
+        <div class="buttons has-addons is-right">
+          <%%= BulmaForm.button_link "Show", Routes.<%= schema.route_helper %>_path(@conn, :show, <%= schema.singular %>), size: :small %>
+          <%%= BulmaForm.button_link "Edit", Routes.<%= schema.route_helper %>_path(@conn, :edit, <%= schema.singular %>), size: :small %>
+          <%%= BulmaForm.button_link "Delete",
+            Routes.<%= schema.route_helper %>_path(@conn, :delete, <%= schema.singular %>),
+            color: :danger,
+            size: :small,
+            method: :delete,
+            data: [confirm: "Are you sure?"]
+          %>
+        </div>
+      </td>
+    </tr>
+<%% end %>
+  </tbody>
+</table>
+

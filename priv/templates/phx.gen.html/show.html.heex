@@ -1,0 +1,17 @@
+<h1 class="title">Show <%= schema.human_singular %></h1>
+
+<div class="block">
+  <ul>
+  <%= for {k, _} <- schema.attrs do %>
+    <li>
+      <strong><%= Phoenix.Naming.humanize(Atom.to_string(k)) %>:</strong>
+      <%%= @<%= schema.singular %>.<%= k %> %>
+    </li>
+  <% end %>
+  </ul>
+</div>
+
+<div class="block buttons is-grouped">
+  <%%= BulmaForm.button_link "Edit", Routes.<%= schema.route_helper %>_path(@conn, :edit, @<%= schema.singular %>) %>
+  <%%= BulmaForm.button_link "Back", Routes.<%= schema.route_helper %>_path(@conn, :index) %>
+</div>

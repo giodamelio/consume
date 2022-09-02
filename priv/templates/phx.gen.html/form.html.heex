@@ -1,0 +1,26 @@
+<.form let={f} for={@changeset} action={@action}>
+  <%%= if @changeset.action do %>
+    <article class="message is-danger">
+      <div class="message-body">
+        <p>Oops, something went wrong! Please check the errors below.</p>
+      </div>
+    </article>
+  <%% end %>
+<%= for {label, input, error} <- inputs, input do %>
+  <%= if String.contains?(input, "text_input") do %>
+  <%%= BulmaForm.text_input @conn, f, <%= Regex.run(~r/f, (\:[^\s]+)/, label) |> Enum.at(1) %> %>
+  <% else %>
+  <%= label %>
+  <%= input %>
+  <%= error %>
+  <% end %>
+<% end %>
+  <div class="field is-grouped">
+    <div class="control">
+      <%%= BulmaForm.button_link "Back", Routes.raw_fetch_data_path(@conn, :index) %>
+    </div>
+    <div class="control">
+      <%%= BulmaForm.submit "Save", color: :primary %>
+    </div>
+  </div>
+</.form>
