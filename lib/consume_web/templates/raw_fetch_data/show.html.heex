@@ -1,18 +1,19 @@
-<h1>Show Raw fetch data</h1>
+<h1 class="title">Show Raw Fetch Data</h1>
 
-<ul>
+<div class="block">
+  <ul>
+    <li>
+      <strong>Hash:</strong>
+      <%= @raw_fetch_data.hash %>
+    </li>
+    <li>
+      <strong>Data:</strong>
+      <%= @raw_fetch_data.data %>
+    </li>
+  </ul>
+</div>
 
-  <li>
-    <strong>Hash:</strong>
-    <%= @raw_fetch_data.hash %>
-  </li>
-
-  <li>
-    <strong>Data:</strong>
-    <%= @raw_fetch_data.data %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.raw_fetch_data_path(@conn, :edit, @raw_fetch_data) %></span> |
-<span><%= link "Back", to: Routes.raw_fetch_data_path(@conn, :index) %></span>
+<div class="block buttons is-grouped">
+  <%= link "Edit", class: "button", to: Routes.raw_fetch_data_path(@conn, :edit, @raw_fetch_data) %>
+  <%= link "Back", class: "button", to: Routes.raw_fetch_data_path(@conn, :index) %>
+</div>

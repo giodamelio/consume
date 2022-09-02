@@ -98,6 +98,8 @@ defmodule ConsumeWeb do
       import ConsumeWeb.ErrorHelpers
       import ConsumeWeb.Gettext
       alias ConsumeWeb.Router.Helpers, as: Routes
+
+      alias ConsumeWeb.Helpers.Form, as: BulmaForm
     end
   end
 
