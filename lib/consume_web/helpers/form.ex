@@ -4,7 +4,7 @@ defmodule ConsumeWeb.Helpers.Form do
 
   import ConsumeWeb.ErrorHelpers
 
-  def input(assigns, form, field) do
+  def text_input(assigns, form, field) do
     ~H"""
     <div class="field">
       <%= HTML.Form.label form, field, class: "label" %>
