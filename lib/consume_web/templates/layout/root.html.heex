@@ -23,10 +23,20 @@
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="navbarMain" class="navbar-menu">
         <div class="navbar-start">
           <%= nav_link @conn, "Home", "/" %>
-          <%= nav_link @conn, "Raw Fetch Data", Routes.raw_fetch_data_path(@conn, :index) %>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <div class="navbar-link">
+              Downloader
+            </div>
+
+            <div class="navbar-dropdown">
+              <%= nav_link @conn, "Fetches", Routes.fetch_path(@conn, :index) %>
+              <%= nav_link @conn, "Raw Fetch Data", Routes.raw_fetch_data_path(@conn, :index) %>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
