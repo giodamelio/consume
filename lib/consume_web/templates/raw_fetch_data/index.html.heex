@@ -7,6 +7,7 @@
 <table class="table is-striped is-fullwidth">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Hash</th>
       <th>Data</th>
 
@@ -16,6 +17,7 @@
   <tbody>
 <%= for raw_fetch_data <- @raw_fetch_data do %>
     <tr>
+      <td><%= raw_fetch_data.id %></td>
       <td><%= raw_fetch_data.hash %></td>
       <td><%= raw_fetch_data.data %></td>
       <td>
