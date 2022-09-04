@@ -1,14 +1,14 @@
-defmodule Consume.FetcherTest do
+defmodule Consume.Downloader.FetcherTest do
   use ExUnit.Case
 
-  alias Consume.Fetcher
+  alias Consume.Downloader.Fetcher
 
   def fetcher_modules do
     with {:ok, all_modules} <- :application.get_key(:consume, :modules) do
       all_modules
       |> Enum.filter(fn m ->
         case Module.split(m) do
-          ["Consume", "Fetcher", name] -> name
+          ["Consume", "Downloader", "Fetchers", name] -> name
           _ -> false
         end
       end)
@@ -27,7 +27,7 @@ defmodule Consume.FetcherTest do
   end
 
   defmodule ConstantFetcher do
-    @behaviour Consume.Fetcher
+    @behaviour Consume.Downloader.Fetcher
 
     @impl true
     def name(), do: "constant"

@@ -1,5 +1,5 @@
-defmodule Consume.Fetcher.HttpGetFetcher do
-  @behaviour Consume.Fetcher
+defmodule Consume.Downloader.Fetchers.HttpGetFetcher do
+  @behaviour Consume.Downloader.Fetcher
 
   @impl true
   def name(), do: "http_get"
