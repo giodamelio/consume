@@ -60,3 +60,11 @@
   </tbody>
 </table>
 
+<%= if Enum.count(@fetches) == 0 do %>
+  <article class="message">
+    <div class="message-body">
+      <p>No Fetches Found</p>
+    </div>
+  </article>
+<% end %>
+
