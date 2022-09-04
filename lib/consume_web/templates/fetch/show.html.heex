@@ -1,0 +1,17 @@
+<h1 class="title">Show Fetch</h1>
+
+<div class="block">
+  <ul>
+  
+    <li>
+      <strong>Fetched at:</strong>
+      <%= @fetch.fetched_at %>
+    </li>
+  
+  </ul>
+</div>
+
+<div class="block buttons is-grouped">
+  <%= BulmaForm.button_link "Edit", Routes.fetch_path(@conn, :edit, @fetch) %>
+  <%= BulmaForm.button_link "Back", Routes.fetch_path(@conn, :index) %>
+</div>

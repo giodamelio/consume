@@ -1,0 +1,24 @@
+<.form let={f} for={@changeset} action={@action}>
+  <%= if @changeset.action do %>
+    <article class="message is-danger">
+      <div class="message-body">
+        <p>Oops, something went wrong! Please check the errors below.</p>
+      </div>
+    </article>
+  <% end %>
+
+  
+  <%= label f, :fetched_at %>
+  <%= datetime_select f, :fetched_at %>
+  <%= error_tag f, :fetched_at %>
+  
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= BulmaForm.button_link "Back", Routes.raw_fetch_data_path(@conn, :index) %>
+    </div>
+    <div class="control">
+      <%= BulmaForm.submit "Save", color: :primary %>
+    </div>
+  </div>
+</.form>
