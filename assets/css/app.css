@@ -1,7 +1,7 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 
 /* Give non button looking links underlines */
-a[href]:not(.button) {
+a[href]:not(.button,.navbar-item) {
   text-decoration: underline;
 }
 
