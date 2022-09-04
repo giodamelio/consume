@@ -14,5 +14,6 @@ defmodule Consume.Downloader.Fetch do
     fetch
     |> cast(attrs, [:fetched_at, :raw_fetch_data_id])
     |> validate_required([:fetched_at, :raw_fetch_data_id])
+    |> foreign_key_constraint(:raw_fetch_data_id)
   end
 end

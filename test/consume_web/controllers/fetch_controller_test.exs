@@ -23,7 +23,12 @@ defmodule ConsumeWeb.FetchControllerTest do
 
   describe "create fetch" do
     test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.fetch_path(conn, :create), fetch: @create_attrs)
+      raw_fetch_data = raw_fetch_data_fixture()
+
+      conn =
+        post(conn, Routes.fetch_path(conn, :create),
+          fetch: Map.put(@create_attrs, :raw_fetch_data_id, raw_fetch_data.id)
+        )
 
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == Routes.fetch_path(conn, :show, id)

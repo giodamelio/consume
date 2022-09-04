@@ -23,10 +23,13 @@ defmodule Consume.DownloaderFixtures do
   Generate a fetch.
   """
   def fetch_fixture(attrs \\ %{}) do
+    raw_fetch_data = raw_fetch_data_fixture()
+
     {:ok, fetch} =
       attrs
       |> Enum.into(%{
-        fetched_at: ~U[2022-09-03 00:34:00Z]
+        fetched_at: ~U[2022-09-03 00:34:00Z],
+        raw_fetch_data_id: raw_fetch_data.id
       })
       |> Consume.Downloader.create_fetch()
 
