@@ -4,9 +4,14 @@ defmodule ConsumeWeb.FetchController do
   alias Consume.Downloader
   alias Consume.Downloader.Fetch
 
+  def index(conn, %{"raw_fetch_data_id" => raw_fetch_data_id}) do
+    fetches = Downloader.list_fetches_by_raw_fetch_data(String.to_integer(raw_fetch_data_id))
+    render(conn, "index.html", fetches: fetches, for: raw_fetch_data_id)
+  end
+
   def index(conn, _params) do
     fetches = Downloader.list_fetches()
-    render(conn, "index.html", fetches: fetches)
+    render(conn, "index.html", fetches: fetches, for: nil)
   end
 
   def new(conn, _params) do

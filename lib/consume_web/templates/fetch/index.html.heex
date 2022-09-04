@@ -1,6 +1,20 @@
-<h1 class="title">Listing Fetches</h1>
+<%= if @for do %>
+  <h1 class="title">Listing Fetches</h1>
+  <h2 class="subtitle">
+    for
+    <%= link to: Routes.raw_fetch_data_path(@conn, :show, @for) do %>
+      raw fetch data <%= @for %>
+    <% end %>
+  </h2>
+<% else %>
+  <h1 class="title">Listing Fetches</h1>
+<% end %>
 
 <span class="is-pulled-right">
+  <%= if @for do %>
+    <%= BulmaForm.button_link "Back to all Fetches", Routes.fetch_path(@conn, :index) %>
+  <% end %>
+
   <%= BulmaForm.button_link "New Fetch", Routes.fetch_path(@conn, :new), color: :primary %>
 </span>
 
