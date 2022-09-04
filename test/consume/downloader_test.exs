@@ -81,6 +81,18 @@ defmodule Consume.DownloaderTest do
       assert Downloader.list_fetches() == [fetch]
     end
 
+    test "list_fetches_by_raw_fetch_data/1 returns matched fetches" do
+      raw_fetch_data = raw_fetch_data_fixture()
+      match_fetch_1 = fetch_fixture(raw_fetch_data_id: raw_fetch_data.id)
+      match_fetch_2 = fetch_fixture(raw_fetch_data_id: raw_fetch_data.id)
+      _bad_fetch_1 = fetch_fixture()
+
+      assert Downloader.list_fetches_by_raw_fetch_data(raw_fetch_data.id) == [
+               match_fetch_1,
+               match_fetch_2
+             ]
+    end
+
     test "get_fetch!/1 returns the fetch with given id" do
       fetch = fetch_fixture()
       assert Downloader.get_fetch!(fetch.id) == fetch

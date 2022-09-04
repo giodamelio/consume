@@ -12,7 +12,7 @@ defmodule Consume.DownloaderFixtures do
       attrs
       |> Enum.into(%{
         data: "some data",
-        hash: "some hash"
+        hash: :crypto.strong_rand_bytes(32) |> Base.encode64()
       })
       |> Consume.Downloader.create_raw_fetch_data()
 

@@ -118,6 +118,15 @@ defmodule Consume.Downloader do
   end
 
   @doc """
+  Returns the list of fetches that reference a specific raw fetch data
+  """
+  def list_fetches_by_raw_fetch_data(id) do
+    query = from(f in Fetch, where: f.raw_fetch_data_id == ^id)
+
+    Repo.all(query)
+  end
+
+  @doc """
   Gets a single fetch.
 
   Raises `Ecto.NoResultsError` if the Fetch does not exist.
