@@ -17,7 +17,7 @@
 <% end %>
   <div class="field is-grouped">
     <div class="control">
-      <%%= BulmaForm.button_link "Back", Routes.raw_fetch_data_path(@conn, :index) %>
+      <%%= BulmaForm.button_link "Back", Routes.<%= schema.route_helper %>_path(@conn, :index) %>
     </div>
     <div class="control">
       <%%= BulmaForm.submit "Save", color: :primary %>
