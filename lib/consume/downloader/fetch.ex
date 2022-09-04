@@ -12,7 +12,7 @@ defmodule Consume.Downloader.Fetch do
   @doc false
   def changeset(fetch, attrs) do
     fetch
-    |> cast(attrs, [:fetched_at])
-    |> validate_required([:fetched_at])
+    |> cast(attrs, [:fetched_at, :raw_fetch_data_id])
+    |> validate_required([:fetched_at, :raw_fetch_data_id])
   end
 end
