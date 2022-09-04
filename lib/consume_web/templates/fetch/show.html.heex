@@ -2,12 +2,20 @@
 
 <div class="block">
   <ul>
-  
     <li>
       <strong>Fetched at:</strong>
       <%= @fetch.fetched_at %>
     </li>
-  
+
+    <li>
+      <strong>Raw Fetch Data ID:</strong>
+      <%= link to: Routes.raw_fetch_data_path(@conn, :show, @fetch.raw_fetch_data_id) do %>
+        <%= @fetch.raw_fetch_data_id %>
+        <span class="icon">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </span>
+      <% end %>
+    </li>
   </ul>
 </div>
 

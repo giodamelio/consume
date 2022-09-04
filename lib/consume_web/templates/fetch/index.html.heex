@@ -7,7 +7,9 @@
 <table class="table is-striped is-fullwidth">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Fetched at</th>
+      <th>Raw Fetch Data ID</th>
 
       <th></th>
     </tr>
@@ -15,7 +17,16 @@
   <tbody>
 <%= for fetch <- @fetches do %>
     <tr>
+      <td><%= fetch.id %></td>
       <td><%= fetch.fetched_at %></td>
+      <td>
+        <%= link to: Routes.raw_fetch_data_path(@conn, :show, fetch.raw_fetch_data_id) do %>
+          <%= fetch.raw_fetch_data_id %>
+          <span class="icon">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </span>
+        <% end %>
+      </td>
 
       <td>
         <div class="buttons has-addons is-right">
