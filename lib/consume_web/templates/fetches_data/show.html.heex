@@ -1,0 +1,20 @@
+<h1 class="title">Show Fetches Data</h1>
+
+<div class="block">
+  <ul>
+    <li>
+      <strong>Hash:</strong>
+      <%= @fetches_data.hash %>
+    </li>
+    <li>
+      <strong>Data:</strong>
+      <%= @fetches_data.data %>
+    </li>
+  </ul>
+</div>
+
+<div class="block buttons is-grouped">
+  <%= BulmaForm.button_link "Associated Fetches", Routes.fetch_path(@conn, :index, fetches_data_id: @fetches_data.id) %>
+  <%= BulmaForm.button_link "Edit", Routes.fetches_data_path(@conn, :edit, @fetches_data) %>
+  <%= BulmaForm.button_link "Back", Routes.fetches_data_path(@conn, :index) %>
+</div>

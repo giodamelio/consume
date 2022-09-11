@@ -4,11 +4,11 @@ defmodule Consume.Repo.Migrations.CreateFetches do
   def change do
     create table(:fetches) do
       add :fetched_at, :utc_datetime
-      add :raw_fetch_data_id, references(:raw_fetch_data, on_delete: :nothing)
+      add :fetches_data_id, references(:fetches_data, on_delete: :nothing)
 
       timestamps()
     end
 
-    create index(:fetches, [:raw_fetch_data_id])
+    create index(:fetches, [:fetches_data_id])
   end
 end

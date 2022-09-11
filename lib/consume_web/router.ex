@@ -18,7 +18,7 @@ defmodule ConsumeWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/raw_fetch_data", RawFetchDataController
+    resources "/fetches_data", FetchesDataController
     resources "/fetches", FetchController
   end
 

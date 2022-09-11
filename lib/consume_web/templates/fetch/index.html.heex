@@ -2,8 +2,8 @@
   <h1 class="title">Listing Fetches</h1>
   <h2 class="subtitle">
     for
-    <%= link to: Routes.raw_fetch_data_path(@conn, :show, @for) do %>
-      raw fetch data <%= @for %>
+    <%= link to: Routes.fetches_data_path(@conn, :show, @for) do %>
+      fetches data <%= @for %>
     <% end %>
   </h2>
 <% else %>
@@ -23,7 +23,7 @@
     <tr>
       <th>ID</th>
       <th>Fetched at</th>
-      <th>Raw Fetch Data ID</th>
+      <th>Fetches Data ID</th>
 
       <th></th>
     </tr>
@@ -34,8 +34,8 @@
       <td><%= fetch.id %></td>
       <td><%= fetch.fetched_at %></td>
       <td>
-        <%= link to: Routes.raw_fetch_data_path(@conn, :show, fetch.raw_fetch_data_id) do %>
-          <%= fetch.raw_fetch_data_id %>
+        <%= link to: Routes.fetches_data_path(@conn, :show, fetch.fetches_data_id) do %>
+          <%= fetch.fetches_data_id %>
           <span class="icon">
             <ion-icon name="arrow-forward-outline"></ion-icon>
           </span>

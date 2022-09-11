@@ -6,100 +6,100 @@ defmodule Consume.Fetcher do
   import Ecto.Query, warn: false
   alias Consume.Repo
 
-  alias Consume.Fetcher.RawFetchData
+  alias Consume.Fetcher.FetchesData
 
   @doc """
-  Returns the list of raw_fetch_data.
+  Returns the list of fetches_data.
 
   ## Examples
 
-      iex> list_raw_fetch_data()
-      [%RawFetchData{}, ...]
+      iex> list_fetches_data()
+      [%FetchesData{}, ...]
 
   """
-  def list_raw_fetch_data do
-    Repo.all(RawFetchData)
+  def list_fetches_data do
+    Repo.all(FetchesData)
   end
 
   @doc """
-  Gets a single raw_fetch_data.
+  Gets a single fetches_data.
 
-  Raises `Ecto.NoResultsError` if the Raw fetch data does not exist.
+  Raises `Ecto.NoResultsError` if the Fetches data does not exist.
 
   ## Examples
 
-      iex> get_raw_fetch_data!(123)
-      %RawFetchData{}
+      iex> get_fetches_data!(123)
+      %FetchesData{}
 
-      iex> get_raw_fetch_data!(456)
+      iex> get_fetches_data!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_raw_fetch_data!(id), do: Repo.get!(RawFetchData, id)
+  def get_fetches_data!(id), do: Repo.get!(FetchesData, id)
 
   @doc """
-  Creates a raw_fetch_data.
+  Creates a fetches_data.
 
   ## Examples
 
-      iex> create_raw_fetch_data(%{field: value})
-      {:ok, %RawFetchData{}}
+      iex> create_fetches_data(%{field: value})
+      {:ok, %FetchesData{}}
 
-      iex> create_raw_fetch_data(%{field: bad_value})
+      iex> create_fetches_data(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_raw_fetch_data(attrs \\ %{}) do
-    %RawFetchData{}
-    |> RawFetchData.changeset(attrs)
+  def create_fetches_data(attrs \\ %{}) do
+    %FetchesData{}
+    |> FetchesData.changeset(attrs)
     |> Repo.insert()
   end
 
   @doc """
-  Updates a raw_fetch_data.
+  Updates a fetches_data.
 
   ## Examples
 
-      iex> update_raw_fetch_data(raw_fetch_data, %{field: new_value})
-      {:ok, %RawFetchData{}}
+      iex> update_fetches_data(fetches_data, %{field: new_value})
+      {:ok, %FetchesData{}}
 
-      iex> update_raw_fetch_data(raw_fetch_data, %{field: bad_value})
+      iex> update_fetches_data(fetches_data, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_raw_fetch_data(%RawFetchData{} = raw_fetch_data, attrs) do
-    raw_fetch_data
-    |> RawFetchData.changeset(attrs)
+  def update_fetches_data(%FetchesData{} = fetches_data, attrs) do
+    fetches_data
+    |> FetchesData.changeset(attrs)
     |> Repo.update()
   end
 
   @doc """
-  Deletes a raw_fetch_data.
+  Deletes a fetches_data.
 
   ## Examples
 
-      iex> delete_raw_fetch_data(raw_fetch_data)
-      {:ok, %RawFetchData{}}
+      iex> delete_fetches_data(fetches_data)
+      {:ok, %FetchesData{}}
 
-      iex> delete_raw_fetch_data(raw_fetch_data)
+      iex> delete_fetches_data(fetches_data)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_raw_fetch_data(%RawFetchData{} = raw_fetch_data) do
-    Repo.delete(raw_fetch_data)
+  def delete_fetches_data(%FetchesData{} = fetches_data) do
+    Repo.delete(fetches_data)
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking raw_fetch_data changes.
+  Returns an `%Ecto.Changeset{}` for tracking fetches_data changes.
 
   ## Examples
 
-      iex> change_raw_fetch_data(raw_fetch_data)
-      %Ecto.Changeset{data: %RawFetchData{}}
+      iex> change_fetches_data(fetches_data)
+      %Ecto.Changeset{data: %FetchesData{}}
 
   """
-  def change_raw_fetch_data(%RawFetchData{} = raw_fetch_data, attrs \\ %{}) do
-    RawFetchData.changeset(raw_fetch_data, attrs)
+  def change_fetches_data(%FetchesData{} = fetches_data, attrs \\ %{}) do
+    FetchesData.changeset(fetches_data, attrs)
   end
 
   alias Consume.Fetcher.Fetch
@@ -118,10 +118,10 @@ defmodule Consume.Fetcher do
   end
 
   @doc """
-  Returns the list of fetches that reference a specific raw fetch data
+  Returns the list of fetches that reference a specific fetches data
   """
-  def list_fetches_by_raw_fetch_data(id) do
-    query = from(f in Fetch, where: f.raw_fetch_data_id == ^id)
+  def list_fetches_by_fetches_data(id) do
+    query = from(f in Fetch, where: f.fetches_data_id == ^id)
 
     Repo.all(query)
   end

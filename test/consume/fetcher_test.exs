@@ -3,68 +3,68 @@ defmodule Consume.FetcherTest do
 
   alias Consume.Fetcher
 
-  describe "raw_fetch_data" do
-    alias Consume.Fetcher.RawFetchData
+  describe "fetches_data" do
+    alias Consume.Fetcher.FetchesData
 
     import Consume.FetcherFixtures
 
     @invalid_attrs %{data: nil, hash: nil}
 
-    test "list_raw_fetch_data/0 returns all raw_fetch_data" do
-      raw_fetch_data = raw_fetch_data_fixture()
-      assert Fetcher.list_raw_fetch_data() == [raw_fetch_data]
+    test "list_fetches_data/0 returns all fetches_data" do
+      fetches_data = fetches_data_fixture()
+      assert Fetcher.list_fetches_data() == [fetches_data]
     end
 
-    test "get_raw_fetch_data!/1 returns the raw_fetch_data with given id" do
-      raw_fetch_data = raw_fetch_data_fixture()
-      assert Fetcher.get_raw_fetch_data!(raw_fetch_data.id) == raw_fetch_data
+    test "get_fetches_data!/1 returns the fetches_data with given id" do
+      fetches_data = fetches_data_fixture()
+      assert Fetcher.get_fetches_data!(fetches_data.id) == fetches_data
     end
 
-    test "create_raw_fetch_data/1 with valid data creates a raw_fetch_data" do
+    test "create_fetches_data/1 with valid data creates a fetches_data" do
       valid_attrs = %{data: "some data", hash: "some hash"}
 
-      assert {:ok, %RawFetchData{} = raw_fetch_data} = Fetcher.create_raw_fetch_data(valid_attrs)
+      assert {:ok, %FetchesData{} = fetches_data} = Fetcher.create_fetches_data(valid_attrs)
 
-      assert raw_fetch_data.data == "some data"
-      assert raw_fetch_data.hash == "some hash"
+      assert fetches_data.data == "some data"
+      assert fetches_data.hash == "some hash"
     end
 
-    test "create_raw_fetch_data/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Fetcher.create_raw_fetch_data(@invalid_attrs)
+    test "create_fetches_data/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Fetcher.create_fetches_data(@invalid_attrs)
     end
 
-    test "update_raw_fetch_data/2 with valid data updates the raw_fetch_data" do
-      raw_fetch_data = raw_fetch_data_fixture()
+    test "update_fetches_data/2 with valid data updates the fetches_data" do
+      fetches_data = fetches_data_fixture()
       update_attrs = %{data: "some updated data", hash: "some updated hash"}
 
-      assert {:ok, %RawFetchData{} = raw_fetch_data} =
-               Fetcher.update_raw_fetch_data(raw_fetch_data, update_attrs)
+      assert {:ok, %FetchesData{} = fetches_data} =
+               Fetcher.update_fetches_data(fetches_data, update_attrs)
 
-      assert raw_fetch_data.data == "some updated data"
-      assert raw_fetch_data.hash == "some updated hash"
+      assert fetches_data.data == "some updated data"
+      assert fetches_data.hash == "some updated hash"
     end
 
-    test "update_raw_fetch_data/2 with invalid data returns error changeset" do
-      raw_fetch_data = raw_fetch_data_fixture()
+    test "update_fetches_data/2 with invalid data returns error changeset" do
+      fetches_data = fetches_data_fixture()
 
       assert {:error, %Ecto.Changeset{}} =
-               Fetcher.update_raw_fetch_data(raw_fetch_data, @invalid_attrs)
+               Fetcher.update_fetches_data(fetches_data, @invalid_attrs)
 
-      assert raw_fetch_data == Fetcher.get_raw_fetch_data!(raw_fetch_data.id)
+      assert fetches_data == Fetcher.get_fetches_data!(fetches_data.id)
     end
 
-    test "delete_raw_fetch_data/1 deletes the raw_fetch_data" do
-      raw_fetch_data = raw_fetch_data_fixture()
-      assert {:ok, %RawFetchData{}} = Fetcher.delete_raw_fetch_data(raw_fetch_data)
+    test "delete_fetches_data/1 deletes the fetches_data" do
+      fetches_data = fetches_data_fixture()
+      assert {:ok, %FetchesData{}} = Fetcher.delete_fetches_data(fetches_data)
 
       assert_raise Ecto.NoResultsError, fn ->
-        Fetcher.get_raw_fetch_data!(raw_fetch_data.id)
+        Fetcher.get_fetches_data!(fetches_data.id)
       end
     end
 
-    test "change_raw_fetch_data/1 returns a raw_fetch_data changeset" do
-      raw_fetch_data = raw_fetch_data_fixture()
-      assert %Ecto.Changeset{} = Fetcher.change_raw_fetch_data(raw_fetch_data)
+    test "change_fetches_data/1 returns a fetches_data changeset" do
+      fetches_data = fetches_data_fixture()
+      assert %Ecto.Changeset{} = Fetcher.change_fetches_data(fetches_data)
     end
   end
 
@@ -80,13 +80,13 @@ defmodule Consume.FetcherTest do
       assert Fetcher.list_fetches() == [fetch]
     end
 
-    test "list_fetches_by_raw_fetch_data/1 returns matched fetches" do
-      raw_fetch_data = raw_fetch_data_fixture()
-      match_fetch_1 = fetch_fixture(raw_fetch_data_id: raw_fetch_data.id)
-      match_fetch_2 = fetch_fixture(raw_fetch_data_id: raw_fetch_data.id)
+    test "list_fetches_by_fetches_data/1 returns matched fetches" do
+      fetches_data = fetches_data_fixture()
+      match_fetch_1 = fetch_fixture(fetches_data_id: fetches_data.id)
+      match_fetch_2 = fetch_fixture(fetches_data_id: fetches_data.id)
       _bad_fetch_1 = fetch_fixture()
 
-      assert Fetcher.list_fetches_by_raw_fetch_data(raw_fetch_data.id) == [
+      assert Fetcher.list_fetches_by_fetches_data(fetches_data.id) == [
                match_fetch_1,
                match_fetch_2
              ]
@@ -98,8 +98,8 @@ defmodule Consume.FetcherTest do
     end
 
     test "create_fetch/1 with valid data creates a fetch" do
-      raw_fetch_data = raw_fetch_data_fixture()
-      valid_attrs = %{fetched_at: ~U[2022-09-03 00:34:00Z], raw_fetch_data_id: raw_fetch_data.id}
+      fetches_data = fetches_data_fixture()
+      valid_attrs = %{fetched_at: ~U[2022-09-03 00:34:00Z], fetches_data_id: fetches_data.id}
 
       assert {:ok, %Fetch{} = fetch} = Fetcher.create_fetch(valid_attrs)
       assert fetch.fetched_at == ~U[2022-09-03 00:34:00Z]

@@ -13,14 +13,14 @@ defmodule ConsumeWeb.FetchControllerTest do
       assert html_response(conn, 200) =~ "Listing Fetches"
     end
 
-    test "lists all fetches for a raw_fetch_data", %{conn: conn} do
-      raw_fetch_data = raw_fetch_data_fixture()
-      _match_fetch_1 = fetch_fixture(raw_fetch_data_id: raw_fetch_data.id)
-      _match_fetch_2 = fetch_fixture(raw_fetch_data_id: raw_fetch_data.id)
+    test "lists all fetches for a fetches_data", %{conn: conn} do
+      fetches_data = fetches_data_fixture()
+      _match_fetch_1 = fetch_fixture(fetches_data_id: fetches_data.id)
+      _match_fetch_2 = fetch_fixture(fetches_data_id: fetches_data.id)
       _bad_fetch_1 = fetch_fixture()
 
-      conn = get(conn, Routes.fetch_path(conn, :index, raw_fetch_data_id: raw_fetch_data.id))
-      assert html_response(conn, 200) =~ "raw fetch data #{raw_fetch_data.id}"
+      conn = get(conn, Routes.fetch_path(conn, :index, fetches_data_id: fetches_data.id))
+      assert html_response(conn, 200) =~ "fetches data #{fetches_data.id}"
     end
   end
 
@@ -33,11 +33,11 @@ defmodule ConsumeWeb.FetchControllerTest do
 
   describe "create fetch" do
     test "redirects to show when data is valid", %{conn: conn} do
-      raw_fetch_data = raw_fetch_data_fixture()
+      fetches_data = fetches_data_fixture()
 
       conn =
         post(conn, Routes.fetch_path(conn, :create),
-          fetch: Map.put(@create_attrs, :raw_fetch_data_id, raw_fetch_data.id)
+          fetch: Map.put(@create_attrs, :fetches_data_id, fetches_data.id)
         )
 
       assert %{id: id} = redirected_params(conn)

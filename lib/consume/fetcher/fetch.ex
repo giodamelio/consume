@@ -4,7 +4,7 @@ defmodule Consume.Fetcher.Fetch do
 
   schema "fetches" do
     field :fetched_at, :utc_datetime
-    field :raw_fetch_data_id, :id
+    field :fetches_data_id, :id
 
     timestamps()
   end
@@ -12,8 +12,8 @@ defmodule Consume.Fetcher.Fetch do
   @doc false
   def changeset(fetch, attrs) do
     fetch
-    |> cast(attrs, [:fetched_at, :raw_fetch_data_id])
-    |> validate_required([:fetched_at, :raw_fetch_data_id])
-    |> foreign_key_constraint(:raw_fetch_data_id)
+    |> cast(attrs, [:fetched_at, :fetches_data_id])
+    |> validate_required([:fetched_at, :fetches_data_id])
+    |> foreign_key_constraint(:fetches_data_id)
   end
 end

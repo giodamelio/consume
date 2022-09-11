@@ -1,0 +1,39 @@
+<h1 class="title">Listing Fetches Data</h1>
+
+<span class="is-pulled-right">
+  <%= BulmaForm.button_link "New Fetches Data", Routes.fetches_data_path(@conn, :new), color: :primary %>
+</span>
+
+<table class="table is-striped is-fullwidth">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Hash</th>
+      <th>Data</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for fetches_data <- @fetches_data do %>
+    <tr>
+      <td><%= fetches_data.id %></td>
+      <td><%= fetches_data.hash %></td>
+      <td><%= fetches_data.data %></td>
+      <td>
+        <div class="buttons has-addons is-right">
+          <%= BulmaForm.button_link "Show", Routes.fetches_data_path(@conn, :show, fetches_data), size: :small %>
+          <%= BulmaForm.button_link "Edit", Routes.fetches_data_path(@conn, :edit, fetches_data), size: :small %>
+          <%= BulmaForm.button_link "Delete",
+            Routes.fetches_data_path(@conn, :delete, fetches_data),
+            color: :danger,
+            size: :small,
+            method: :delete,
+            data: [confirm: "Are you sure?"]
+          %>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
