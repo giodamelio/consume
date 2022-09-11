@@ -1,4 +1,4 @@
-defmodule Consume.Downloader.RawFetchData do
+defmodule Consume.Fetcher.RawFetchData do
   use Ecto.Schema
   import Ecto.Changeset
 

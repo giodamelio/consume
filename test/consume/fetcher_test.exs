@@ -1,37 +1,36 @@
-defmodule Consume.DownloaderTest do
+defmodule Consume.FetcherTest do
   use Consume.DataCase
 
-  alias Consume.Downloader
+  alias Consume.Fetcher
 
   describe "raw_fetch_data" do
-    alias Consume.Downloader.RawFetchData
+    alias Consume.Fetcher.RawFetchData
 
-    import Consume.DownloaderFixtures
+    import Consume.FetcherFixtures
 
     @invalid_attrs %{data: nil, hash: nil}
 
     test "list_raw_fetch_data/0 returns all raw_fetch_data" do
       raw_fetch_data = raw_fetch_data_fixture()
-      assert Downloader.list_raw_fetch_data() == [raw_fetch_data]
+      assert Fetcher.list_raw_fetch_data() == [raw_fetch_data]
     end
 
     test "get_raw_fetch_data!/1 returns the raw_fetch_data with given id" do
       raw_fetch_data = raw_fetch_data_fixture()
-      assert Downloader.get_raw_fetch_data!(raw_fetch_data.id) == raw_fetch_data
+      assert Fetcher.get_raw_fetch_data!(raw_fetch_data.id) == raw_fetch_data
     end
 
     test "create_raw_fetch_data/1 with valid data creates a raw_fetch_data" do
       valid_attrs = %{data: "some data", hash: "some hash"}
 
-      assert {:ok, %RawFetchData{} = raw_fetch_data} =
-               Downloader.create_raw_fetch_data(valid_attrs)
+      assert {:ok, %RawFetchData{} = raw_fetch_data} = Fetcher.create_raw_fetch_data(valid_attrs)
 
       assert raw_fetch_data.data == "some data"
       assert raw_fetch_data.hash == "some hash"
     end
 
     test "create_raw_fetch_data/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Downloader.create_raw_fetch_data(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Fetcher.create_raw_fetch_data(@invalid_attrs)
     end
 
     test "update_raw_fetch_data/2 with valid data updates the raw_fetch_data" do
@@ -39,7 +38,7 @@ defmodule Consume.DownloaderTest do
       update_attrs = %{data: "some updated data", hash: "some updated hash"}
 
       assert {:ok, %RawFetchData{} = raw_fetch_data} =
-               Downloader.update_raw_fetch_data(raw_fetch_data, update_attrs)
+               Fetcher.update_raw_fetch_data(raw_fetch_data, update_attrs)
 
       assert raw_fetch_data.data == "some updated data"
       assert raw_fetch_data.hash == "some updated hash"
@@ -49,36 +48,36 @@ defmodule Consume.DownloaderTest do
       raw_fetch_data = raw_fetch_data_fixture()
 
       assert {:error, %Ecto.Changeset{}} =
-               Downloader.update_raw_fetch_data(raw_fetch_data, @invalid_attrs)
+               Fetcher.update_raw_fetch_data(raw_fetch_data, @invalid_attrs)
 
-      assert raw_fetch_data == Downloader.get_raw_fetch_data!(raw_fetch_data.id)
+      assert raw_fetch_data == Fetcher.get_raw_fetch_data!(raw_fetch_data.id)
     end
 
     test "delete_raw_fetch_data/1 deletes the raw_fetch_data" do
       raw_fetch_data = raw_fetch_data_fixture()
-      assert {:ok, %RawFetchData{}} = Downloader.delete_raw_fetch_data(raw_fetch_data)
+      assert {:ok, %RawFetchData{}} = Fetcher.delete_raw_fetch_data(raw_fetch_data)
 
       assert_raise Ecto.NoResultsError, fn ->
-        Downloader.get_raw_fetch_data!(raw_fetch_data.id)
+        Fetcher.get_raw_fetch_data!(raw_fetch_data.id)
       end
     end
 
     test "change_raw_fetch_data/1 returns a raw_fetch_data changeset" do
       raw_fetch_data = raw_fetch_data_fixture()
-      assert %Ecto.Changeset{} = Downloader.change_raw_fetch_data(raw_fetch_data)
+      assert %Ecto.Changeset{} = Fetcher.change_raw_fetch_data(raw_fetch_data)
     end
   end
 
   describe "fetches" do
-    alias Consume.Downloader.Fetch
+    alias Consume.Fetcher.Fetch
 
-    import Consume.DownloaderFixtures
+    import Consume.FetcherFixtures
 
     @invalid_attrs %{fetched_at: nil}
 
     test "list_fetches/0 returns all fetches" do
       fetch = fetch_fixture()
-      assert Downloader.list_fetches() == [fetch]
+      assert Fetcher.list_fetches() == [fetch]
     end
 
     test "list_fetches_by_raw_fetch_data/1 returns matched fetches" do
@@ -87,7 +86,7 @@ defmodule Consume.DownloaderTest do
       match_fetch_2 = fetch_fixture(raw_fetch_data_id: raw_fetch_data.id)
       _bad_fetch_1 = fetch_fixture()
 
-      assert Downloader.list_fetches_by_raw_fetch_data(raw_fetch_data.id) == [
+      assert Fetcher.list_fetches_by_raw_fetch_data(raw_fetch_data.id) == [
                match_fetch_1,
                match_fetch_2
              ]
@@ -95,44 +94,44 @@ defmodule Consume.DownloaderTest do
 
     test "get_fetch!/1 returns the fetch with given id" do
       fetch = fetch_fixture()
-      assert Downloader.get_fetch!(fetch.id) == fetch
+      assert Fetcher.get_fetch!(fetch.id) == fetch
     end
 
     test "create_fetch/1 with valid data creates a fetch" do
       raw_fetch_data = raw_fetch_data_fixture()
       valid_attrs = %{fetched_at: ~U[2022-09-03 00:34:00Z], raw_fetch_data_id: raw_fetch_data.id}
 
-      assert {:ok, %Fetch{} = fetch} = Downloader.create_fetch(valid_attrs)
+      assert {:ok, %Fetch{} = fetch} = Fetcher.create_fetch(valid_attrs)
       assert fetch.fetched_at == ~U[2022-09-03 00:34:00Z]
     end
 
     test "create_fetch/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Downloader.create_fetch(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Fetcher.create_fetch(@invalid_attrs)
     end
 
     test "update_fetch/2 with valid data updates the fetch" do
       fetch = fetch_fixture()
       update_attrs = %{fetched_at: ~U[2022-09-04 00:34:00Z]}
 
-      assert {:ok, %Fetch{} = fetch} = Downloader.update_fetch(fetch, update_attrs)
+      assert {:ok, %Fetch{} = fetch} = Fetcher.update_fetch(fetch, update_attrs)
       assert fetch.fetched_at == ~U[2022-09-04 00:34:00Z]
     end
 
     test "update_fetch/2 with invalid data returns error changeset" do
       fetch = fetch_fixture()
-      assert {:error, %Ecto.Changeset{}} = Downloader.update_fetch(fetch, @invalid_attrs)
-      assert fetch == Downloader.get_fetch!(fetch.id)
+      assert {:error, %Ecto.Changeset{}} = Fetcher.update_fetch(fetch, @invalid_attrs)
+      assert fetch == Fetcher.get_fetch!(fetch.id)
     end
 
     test "delete_fetch/1 deletes the fetch" do
       fetch = fetch_fixture()
-      assert {:ok, %Fetch{}} = Downloader.delete_fetch(fetch)
-      assert_raise Ecto.NoResultsError, fn -> Downloader.get_fetch!(fetch.id) end
+      assert {:ok, %Fetch{}} = Fetcher.delete_fetch(fetch)
+      assert_raise Ecto.NoResultsError, fn -> Fetcher.get_fetch!(fetch.id) end
     end
 
     test "change_fetch/1 returns a fetch changeset" do
       fetch = fetch_fixture()
-      assert %Ecto.Changeset{} = Downloader.change_fetch(fetch)
+      assert %Ecto.Changeset{} = Fetcher.change_fetch(fetch)
     end
   end
 end

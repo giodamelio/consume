@@ -1,4 +1,4 @@
-defmodule Consume.Downloader.Fetcher do
+defmodule Consume.Fetcher.Fetcher do
   @moduledoc """
   Describe a simple Fetcher.
   """
@@ -29,9 +29,9 @@ defmodule Consume.Downloader.Fetcher do
   @callback valid_id?(uri) :: boolean()
 
   def list_fetchers() do
-    [Consume.Downloader.Fetchers.HttpGetFetcher]
+    [Consume.Fetcher.Fetchers.HttpGetFetcher]
   end
 
-  def get_fetcher("http_get"), do: {:ok, Consume.Downloader.Fetchers.HttpGetFetcher}
+  def get_fetcher("http_get"), do: {:ok, Consume.Fetcher.Fetchers.HttpGetFetcher}
   def get_fetcher(name), do: {:error, "Fetcher #{name} not found"}
 end

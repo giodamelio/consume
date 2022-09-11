@@ -1,7 +1,7 @@
-defmodule Consume.DownloaderFixtures do
+defmodule Consume.FetcherFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `Consume.Downloader` context.
+  entities via the `Consume.Fetcher` context.
   """
 
   @doc """
@@ -14,7 +14,7 @@ defmodule Consume.DownloaderFixtures do
         data: "some data",
         hash: :crypto.strong_rand_bytes(32) |> Base.encode64()
       })
-      |> Consume.Downloader.create_raw_fetch_data()
+      |> Consume.Fetcher.create_raw_fetch_data()
 
     raw_fetch_data
   end
@@ -31,7 +31,7 @@ defmodule Consume.DownloaderFixtures do
         fetched_at: ~U[2022-09-03 00:34:00Z],
         raw_fetch_data_id: raw_fetch_data.id
       })
-      |> Consume.Downloader.create_fetch()
+      |> Consume.Fetcher.create_fetch()
 
     fetch
   end

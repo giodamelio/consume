@@ -1,7 +1,7 @@
-defmodule Consume.Downloader.Fetchers.HttpGetFetcherTest do
+defmodule Consume.Fetcher.Fetchers.HttpGetFetcherTest do
   use ExUnit.Case
 
-  alias Consume.Downloader.Fetchers.HttpGetFetcher
+  alias Consume.Fetcher.Fetchers.HttpGetFetcher
   import Tesla.Mock
 
   test "correctly implements Consume.Fetcher.name" do
@@ -9,7 +9,7 @@ defmodule Consume.Downloader.Fetchers.HttpGetFetcherTest do
   end
 
   test "can get fetcher by name" do
-    assert Consume.Downloader.Fetcher.get_fetcher("http_get") == {:ok, HttpGetFetcher}
+    assert Consume.Fetcher.Fetcher.get_fetcher("http_get") == {:ok, HttpGetFetcher}
   end
 
   test "correctly implements Consume.Fetcher.fetch" do

@@ -1,7 +1,7 @@
 defmodule ConsumeWeb.RawFetchDataControllerTest do
   use ConsumeWeb.ConnCase
 
-  import Consume.DownloaderFixtures
+  import Consume.FetcherFixtures
 
   @create_attrs %{data: "some data", hash: "some hash"}
   @update_attrs %{data: "some updated data", hash: "some updated hash"}

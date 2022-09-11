@@ -1,7 +1,7 @@
 defmodule ConsumeWeb.FetchControllerTest do
   use ConsumeWeb.ConnCase
 
-  import Consume.DownloaderFixtures
+  import Consume.FetcherFixtures
 
   @create_attrs %{fetched_at: ~U[2022-09-03 00:34:00Z]}
   @update_attrs %{fetched_at: ~U[2022-09-04 00:34:00Z]}

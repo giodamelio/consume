@@ -1,12 +1,12 @@
-defmodule Consume.Downloader do
+defmodule Consume.Fetcher do
   @moduledoc """
-  The Downloader context.
+  The Fetcher context.
   """
 
   import Ecto.Query, warn: false
   alias Consume.Repo
 
-  alias Consume.Downloader.RawFetchData
+  alias Consume.Fetcher.RawFetchData
 
   @doc """
   Returns the list of raw_fetch_data.
@@ -102,7 +102,7 @@ defmodule Consume.Downloader do
     RawFetchData.changeset(raw_fetch_data, attrs)
   end
 
-  alias Consume.Downloader.Fetch
+  alias Consume.Fetcher.Fetch
 
   @doc """
   Returns the list of fetches.
