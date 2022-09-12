@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>URI</th>
       <th>Fetcher</th>
       <th>Fetch after</th>
       <th>Fetch interval seconds</th>
@@ -19,6 +20,7 @@
 <%= for feed <- @feeds do %>
     <tr>
       <td><%= feed.name %></td>
+      <td><%= feed.uri %></td>
       <td><%= feed.fetcher %></td>
       <td><%= feed.fetch_after %></td>
       <td><%= feed.fetch_interval_seconds %></td>

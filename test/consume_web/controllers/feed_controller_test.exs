@@ -3,8 +3,20 @@ defmodule ConsumeWeb.FeedControllerTest do
 
   import Consume.FetcherFixtures
 
-  @create_attrs %{fetch_after: ~U[2022-09-11 21:50:00Z], fetch_interval_seconds: 42, fetcher: :rss2_0, name: "some name"}
-  @update_attrs %{fetch_after: ~U[2022-09-12 21:50:00Z], fetch_interval_seconds: 43, fetcher: :atom, name: "some updated name"}
+  @create_attrs %{
+    fetch_after: ~U[2022-09-11 21:50:00Z],
+    fetch_interval_seconds: 42,
+    fetcher: :rss2_0,
+    name: "some name",
+    uri: "https://nope.nope"
+  }
+  @update_attrs %{
+    fetch_after: ~U[2022-09-12 21:50:00Z],
+    fetch_interval_seconds: 43,
+    fetcher: :atom,
+    name: "some updated name",
+    uri: "https://really-nope.nope"
+  }
   @invalid_attrs %{fetch_after: nil, fetch_interval_seconds: nil, fetcher: nil, name: nil}
 
   describe "index" do

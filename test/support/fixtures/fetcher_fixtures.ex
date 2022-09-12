@@ -46,7 +46,8 @@ defmodule Consume.FetcherFixtures do
         fetch_after: ~U[2022-09-11 21:50:00Z],
         fetch_interval_seconds: 42,
         fetcher: :rss2_0,
-        name: "some name"
+        name: "some name",
+        uri: "https://nope.nop"
       })
       |> Consume.Fetcher.create_feed()
 
