@@ -24,12 +24,7 @@
   <%= datetime_select f, :fetch_after %>
   <%= error_tag f, :fetch_after %>
   
-
-  
-  <%= label f, :fetch_interval_seconds %>
-  <%= number_input f, :fetch_interval_seconds %>
-  <%= error_tag f, :fetch_interval_seconds %>
-  
+  <%= BulmaForm.number_input @conn, f, :fetch_interval_seconds %>
 
   <div class="field is-grouped">
     <div class="control">

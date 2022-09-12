@@ -16,6 +16,18 @@ defmodule ConsumeWeb.Helpers.Form do
     """
   end
 
+  def number_input(assigns, form, field) do
+    ~H"""
+    <div class="field">
+      <%= HTML.Form.label form, field, class: "label" %>
+      <div class="control">
+        <%= HTML.Form.number_input form, field, class: "input" %>
+      </div>
+      <%= error_tag form, field %>
+    </div>
+    """
+  end
+
   def button_link(text, path, opts \\ []) do
     classes = [
       "button"
