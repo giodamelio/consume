@@ -29,6 +29,16 @@
 
           <div class="navbar-item has-dropdown is-hoverable">
             <div class="navbar-link">
+              Feeds
+            </div>
+
+            <div class="navbar-dropdown">
+              <%= nav_link @conn, "Feeds", Routes.feed_path(@conn, :index) %>
+            </div>
+          </div>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <div class="navbar-link">
               Fetcher
             </div>
 
