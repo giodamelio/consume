@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>Hash</th>
+      <th>Feed</th>
       <th>Data</th>
 
       <th></th>
@@ -17,6 +18,14 @@
 <%= for feed_item <- @feed_items do %>
     <tr>
       <td><%= feed_item.hash %></td>
+      <td>
+        <%= link to: Routes.feed_path(@conn, :show, feed_item.feed_id) do %>
+            <%= feed_item.feed_id %>
+            <span class="icon">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </span>
+        <% end %>
+      </td>
       <td><%= feed_item.data %></td>
 
       <td>

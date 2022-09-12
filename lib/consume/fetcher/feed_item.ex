@@ -13,7 +13,8 @@ defmodule Consume.Fetcher.FeedItem do
   @doc false
   def changeset(feed_item, attrs) do
     feed_item
-    |> cast(attrs, [:hash, :data])
-    |> validate_required([:hash, :data])
+    |> cast(attrs, [:hash, :data, :feed_id])
+    |> validate_required([:hash, :data, :feed_id])
+    |> foreign_key_constraint(:feed_id)
   end
 end

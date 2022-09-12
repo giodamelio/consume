@@ -7,6 +7,16 @@
       <strong>Hash:</strong>
       <%= @feed_item.hash %>
     </li>
+
+    <li>
+      <strong>Feed ID:</strong>
+      <%= link to: Routes.feed_path(@conn, :show, @feed_item.feed_id) do %>
+          <%= @feed_item.feed_id %>
+          <span class="icon">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </span>
+      <% end %>
+    </li>
   
     <li>
       <strong>Data:</strong>
