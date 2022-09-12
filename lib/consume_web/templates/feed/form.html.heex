@@ -12,13 +12,7 @@
 
   <%= BulmaForm.text_input @conn, f, :uri %>
   
-
-  
-  <%= label f, :fetcher %>
-  <%= select f, :fetcher, Ecto.Enum.values(Consume.Fetcher.Feed, :fetcher), prompt: "Choose a value" %>
-  <%= error_tag f, :fetcher %>
-  
-
+  <%= BulmaForm.select @conn, f, :fetcher, Ecto.Enum.values(Consume.Fetcher.Feed, :fetcher), prompt: "Choose a value" %>
   
   <%= label f, :fetch_after %>
   <%= datetime_select f, :fetch_after %>

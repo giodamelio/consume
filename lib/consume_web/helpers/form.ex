@@ -28,6 +28,18 @@ defmodule ConsumeWeb.Helpers.Form do
     """
   end
 
+  def select(assigns, form, field, values, opts \\ []) do
+    ~H"""
+    <div class="field">
+      <%= HTML.Form.label form, field, class: "label" %>
+      <div class="control">
+        <%= HTML.Form.select form, field, values, [class: "input"] ++ opts %>
+      </div>
+      <%= error_tag form, field %>
+    </div>
+    """
+  end
+
   def button_link(text, path, opts \\ []) do
     classes = [
       "button"

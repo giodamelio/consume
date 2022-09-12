@@ -12,6 +12,8 @@
   <%%= BulmaForm.text_input @conn, f, <%= Regex.run(~r/f, (\:[^\s]+)/, label) |> Enum.at(1) %> %>
   <% String.contains?(input, "number_input") -> %>
   <%%= BulmaForm.number_input @conn, f, <%= Regex.run(~r/f, (\:[^\s]+)/, label) |> Enum.at(1) %> %>
+  <% String.contains?(input, "select") -> %>
+  <%%= BulmaForm.select @conn, f, <%= Regex.run(~r/f, (\:[^\s]+)/, label) |> Enum.at(1) %>, <%= Regex.run(~r/(Ecto.Enum.values\(.+, \:.+\))/, input) |> Enum.at(1) %>, prompt: "Choose a value" %>
   <% true -> %>
   <%= label %>
   <%= input %>
