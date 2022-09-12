@@ -14,10 +14,8 @@
   
   <%= BulmaForm.select @conn, f, :fetcher, Ecto.Enum.values(Consume.Fetcher.Feed, :fetcher), prompt: "Choose a value" %>
   
-  <%= label f, :fetch_after %>
-  <%= datetime_select f, :fetch_after %>
-  <%= error_tag f, :fetch_after %>
-  
+  <%= BulmaForm.datetime_select @conn, f, :fetch_after %>
+
   <%= BulmaForm.number_input @conn, f, :fetch_interval_seconds %>
 
   <div class="field is-grouped">

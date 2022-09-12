@@ -28,6 +28,18 @@ defmodule ConsumeWeb.Helpers.Form do
     """
   end
 
+  def datetime_select(assigns, form, field) do
+    ~H"""
+    <div class="field">
+      <%= HTML.Form.label form, field, class: "label" %>
+      <div class="control">
+        <%= HTML.Form.datetime_local_input form, field, class: "input" %>
+      </div>
+      <%= error_tag form, field %>
+    </div>
+    """
+  end
+
   def select(assigns, form, field, values, opts \\ []) do
     ~H"""
     <div class="field">
