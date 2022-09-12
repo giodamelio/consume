@@ -206,4 +206,60 @@ defmodule Consume.FetcherTest do
       assert %Ecto.Changeset{} = Fetcher.change_feed(feed)
     end
   end
+
+  describe "feed_items" do
+    alias Consume.Fetcher.FeedItem
+
+    import Consume.FetcherFixtures
+
+    @invalid_attrs %{data: nil, hash: nil}
+
+    test "list_feed_items/0 returns all feed_items" do
+      feed_item = feed_item_fixture()
+      assert Fetcher.list_feed_items() == [feed_item]
+    end
+
+    test "get_feed_item!/1 returns the feed_item with given id" do
+      feed_item = feed_item_fixture()
+      assert Fetcher.get_feed_item!(feed_item.id) == feed_item
+    end
+
+    test "create_feed_item/1 with valid data creates a feed_item" do
+      valid_attrs = %{data: "some data", hash: "some hash"}
+
+      assert {:ok, %FeedItem{} = feed_item} = Fetcher.create_feed_item(valid_attrs)
+      assert feed_item.data == "some data"
+      assert feed_item.hash == "some hash"
+    end
+
+    test "create_feed_item/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Fetcher.create_feed_item(@invalid_attrs)
+    end
+
+    test "update_feed_item/2 with valid data updates the feed_item" do
+      feed_item = feed_item_fixture()
+      update_attrs = %{data: "some updated data", hash: "some updated hash"}
+
+      assert {:ok, %FeedItem{} = feed_item} = Fetcher.update_feed_item(feed_item, update_attrs)
+      assert feed_item.data == "some updated data"
+      assert feed_item.hash == "some updated hash"
+    end
+
+    test "update_feed_item/2 with invalid data returns error changeset" do
+      feed_item = feed_item_fixture()
+      assert {:error, %Ecto.Changeset{}} = Fetcher.update_feed_item(feed_item, @invalid_attrs)
+      assert feed_item == Fetcher.get_feed_item!(feed_item.id)
+    end
+
+    test "delete_feed_item/1 deletes the feed_item" do
+      feed_item = feed_item_fixture()
+      assert {:ok, %FeedItem{}} = Fetcher.delete_feed_item(feed_item)
+      assert_raise Ecto.NoResultsError, fn -> Fetcher.get_feed_item!(feed_item.id) end
+    end
+
+    test "change_feed_item/1 returns a feed_item changeset" do
+      feed_item = feed_item_fixture()
+      assert %Ecto.Changeset{} = Fetcher.change_feed_item(feed_item)
+    end
+  end
 end

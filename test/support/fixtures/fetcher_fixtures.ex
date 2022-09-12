@@ -53,4 +53,19 @@ defmodule Consume.FetcherFixtures do
 
     feed
   end
+
+  @doc """
+  Generate a feed_item.
+  """
+  def feed_item_fixture(attrs \\ %{}) do
+    {:ok, feed_item} =
+      attrs
+      |> Enum.into(%{
+        data: "some data",
+        hash: "some hash"
+      })
+      |> Consume.Fetcher.create_feed_item()
+
+    feed_item
+  end
 end

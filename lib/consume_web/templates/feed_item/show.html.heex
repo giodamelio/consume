@@ -1,0 +1,22 @@
+<h1 class="title">Show Feed item</h1>
+
+<div class="block">
+  <ul>
+  
+    <li>
+      <strong>Hash:</strong>
+      <%= @feed_item.hash %>
+    </li>
+  
+    <li>
+      <strong>Data:</strong>
+      <%= @feed_item.data %>
+    </li>
+  
+  </ul>
+</div>
+
+<div class="block buttons is-grouped">
+  <%= BulmaForm.button_link "Edit", Routes.feed_item_path(@conn, :edit, @feed_item) %>
+  <%= BulmaForm.button_link "Back", Routes.feed_item_path(@conn, :index) %>
+</div>

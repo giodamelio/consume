@@ -1,0 +1,39 @@
+<h1 class="title">Listing Feed items</h1>
+
+<span class="is-pulled-right">
+  <%= BulmaForm.button_link "New Feed item", Routes.feed_item_path(@conn, :new), color: :primary %>
+</span>
+
+<table class="table is-striped is-fullwidth">
+  <thead>
+    <tr>
+      <th>Hash</th>
+      <th>Data</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for feed_item <- @feed_items do %>
+    <tr>
+      <td><%= feed_item.hash %></td>
+      <td><%= feed_item.data %></td>
+
+      <td>
+        <div class="buttons has-addons is-right">
+          <%= BulmaForm.button_link "Show", Routes.feed_item_path(@conn, :show, feed_item), size: :small %>
+          <%= BulmaForm.button_link "Edit", Routes.feed_item_path(@conn, :edit, feed_item), size: :small %>
+          <%= BulmaForm.button_link "Delete",
+            Routes.feed_item_path(@conn, :delete, feed_item),
+            color: :danger,
+            size: :small,
+            method: :delete,
+            data: [confirm: "Are you sure?"]
+          %>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
