@@ -3,7 +3,7 @@ defmodule Consume.Fetcher.Feed do
   import Ecto.Changeset
 
   schema "feeds" do
-    field :fetch_after, :utc_datetime
+    field :fetch_after, :utc_datetime_usec
     field :fetch_interval_seconds, :integer
     field :fetcher, Ecto.Enum, values: [:rss2_0, :atom, :youtube]
     field :name, :string
