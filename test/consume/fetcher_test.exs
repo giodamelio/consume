@@ -134,4 +134,64 @@ defmodule Consume.FetcherTest do
       assert %Ecto.Changeset{} = Fetcher.change_fetch(fetch)
     end
   end
+
+  describe "feeds" do
+    alias Consume.Fetcher.Feed
+
+    import Consume.FetcherFixtures
+
+    @invalid_attrs %{fetch_after: nil, fetch_interval_seconds: nil, fetcher: nil, name: nil}
+
+    test "list_feeds/0 returns all feeds" do
+      feed = feed_fixture()
+      assert Fetcher.list_feeds() == [feed]
+    end
+
+    test "get_feed!/1 returns the feed with given id" do
+      feed = feed_fixture()
+      assert Fetcher.get_feed!(feed.id) == feed
+    end
+
+    test "create_feed/1 with valid data creates a feed" do
+      valid_attrs = %{fetch_after: ~U[2022-09-11 21:50:00Z], fetch_interval_seconds: 42, fetcher: :rss2_0, name: "some name"}
+
+      assert {:ok, %Feed{} = feed} = Fetcher.create_feed(valid_attrs)
+      assert feed.fetch_after == ~U[2022-09-11 21:50:00Z]
+      assert feed.fetch_interval_seconds == 42
+      assert feed.fetcher == :rss2_0
+      assert feed.name == "some name"
+    end
+
+    test "create_feed/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Fetcher.create_feed(@invalid_attrs)
+    end
+
+    test "update_feed/2 with valid data updates the feed" do
+      feed = feed_fixture()
+      update_attrs = %{fetch_after: ~U[2022-09-12 21:50:00Z], fetch_interval_seconds: 43, fetcher: :atom, name: "some updated name"}
+
+      assert {:ok, %Feed{} = feed} = Fetcher.update_feed(feed, update_attrs)
+      assert feed.fetch_after == ~U[2022-09-12 21:50:00Z]
+      assert feed.fetch_interval_seconds == 43
+      assert feed.fetcher == :atom
+      assert feed.name == "some updated name"
+    end
+
+    test "update_feed/2 with invalid data returns error changeset" do
+      feed = feed_fixture()
+      assert {:error, %Ecto.Changeset{}} = Fetcher.update_feed(feed, @invalid_attrs)
+      assert feed == Fetcher.get_feed!(feed.id)
+    end
+
+    test "delete_feed/1 deletes the feed" do
+      feed = feed_fixture()
+      assert {:ok, %Feed{}} = Fetcher.delete_feed(feed)
+      assert_raise Ecto.NoResultsError, fn -> Fetcher.get_feed!(feed.id) end
+    end
+
+    test "change_feed/1 returns a feed changeset" do
+      feed = feed_fixture()
+      assert %Ecto.Changeset{} = Fetcher.change_feed(feed)
+    end
+  end
 end

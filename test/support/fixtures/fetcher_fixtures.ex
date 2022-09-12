@@ -35,4 +35,21 @@ defmodule Consume.FetcherFixtures do
 
     fetch
   end
+
+  @doc """
+  Generate a feed.
+  """
+  def feed_fixture(attrs \\ %{}) do
+    {:ok, feed} =
+      attrs
+      |> Enum.into(%{
+        fetch_after: ~U[2022-09-11 21:50:00Z],
+        fetch_interval_seconds: 42,
+        fetcher: :rss2_0,
+        name: "some name"
+      })
+      |> Consume.Fetcher.create_feed()
+
+    feed
+  end
 end

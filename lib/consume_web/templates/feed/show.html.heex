@@ -1,0 +1,32 @@
+<h1 class="title">Show Feed</h1>
+
+<div class="block">
+  <ul>
+  
+    <li>
+      <strong>Name:</strong>
+      <%= @feed.name %>
+    </li>
+  
+    <li>
+      <strong>Fetcher:</strong>
+      <%= @feed.fetcher %>
+    </li>
+  
+    <li>
+      <strong>Fetch after:</strong>
+      <%= @feed.fetch_after %>
+    </li>
+  
+    <li>
+      <strong>Fetch interval seconds:</strong>
+      <%= @feed.fetch_interval_seconds %>
+    </li>
+  
+  </ul>
+</div>
+
+<div class="block buttons is-grouped">
+  <%= BulmaForm.button_link "Edit", Routes.feed_path(@conn, :edit, @feed) %>
+  <%= BulmaForm.button_link "Back", Routes.feed_path(@conn, :index) %>
+</div>

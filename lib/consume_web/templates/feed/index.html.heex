@@ -1,0 +1,43 @@
+<h1 class="title">Listing Feeds</h1>
+
+<span class="is-pulled-right">
+  <%= BulmaForm.button_link "New Feed", Routes.feed_path(@conn, :new), color: :primary %>
+</span>
+
+<table class="table is-striped is-fullwidth">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Fetcher</th>
+      <th>Fetch after</th>
+      <th>Fetch interval seconds</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for feed <- @feeds do %>
+    <tr>
+      <td><%= feed.name %></td>
+      <td><%= feed.fetcher %></td>
+      <td><%= feed.fetch_after %></td>
+      <td><%= feed.fetch_interval_seconds %></td>
+
+      <td>
+        <div class="buttons has-addons is-right">
+          <%= BulmaForm.button_link "Show", Routes.feed_path(@conn, :show, feed), size: :small %>
+          <%= BulmaForm.button_link "Edit", Routes.feed_path(@conn, :edit, feed), size: :small %>
+          <%= BulmaForm.button_link "Delete",
+            Routes.feed_path(@conn, :delete, feed),
+            color: :danger,
+            size: :small,
+            method: :delete,
+            data: [confirm: "Are you sure?"]
+          %>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
