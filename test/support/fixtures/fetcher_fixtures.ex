@@ -47,7 +47,8 @@ defmodule Consume.FetcherFixtures do
         fetch_interval_seconds: 42,
         fetcher: :rss2_0,
         name: "some name",
-        uri: "https://nope.nop"
+        uri: "https://nope.nop",
+        enabled: false
       })
       |> Consume.Fetcher.create_feed()
 
@@ -58,11 +59,14 @@ defmodule Consume.FetcherFixtures do
   Generate a feed_item.
   """
   def feed_item_fixture(attrs \\ %{}) do
+    feed = feed_fixture()
+
     {:ok, feed_item} =
       attrs
       |> Enum.into(%{
         data: "some data",
-        hash: "some hash"
+        hash: "some hash",
+        feed_id: feed.id
       })
       |> Consume.Fetcher.create_feed_item()
 

@@ -154,15 +154,16 @@ defmodule Consume.FetcherTest do
 
     test "create_feed/1 with valid data creates a feed" do
       valid_attrs = %{
-        fetch_after: ~U[2022-09-11 21:50:00Z],
+        fetch_after: ~U[2022-09-11 21:50:00.000000Z],
         fetch_interval_seconds: 42,
         fetcher: :rss2_0,
         name: "some name",
-        uri: "https://nope.nope"
+        uri: "https://nope.nope",
+        enabled: false
       }
 
       assert {:ok, %Feed{} = feed} = Fetcher.create_feed(valid_attrs)
-      assert feed.fetch_after == ~U[2022-09-11 21:50:00Z]
+      assert feed.fetch_after == ~U[2022-09-11 21:50:00.000000Z]
       assert feed.fetch_interval_seconds == 42
       assert feed.fetcher == :rss2_0
       assert feed.name == "some name"
@@ -176,14 +177,14 @@ defmodule Consume.FetcherTest do
       feed = feed_fixture()
 
       update_attrs = %{
-        fetch_after: ~U[2022-09-12 21:50:00Z],
+        fetch_after: ~U[2022-09-12 21:50:00.000000Z],
         fetch_interval_seconds: 43,
         fetcher: :atom,
         name: "some updated name"
       }
 
       assert {:ok, %Feed{} = feed} = Fetcher.update_feed(feed, update_attrs)
-      assert feed.fetch_after == ~U[2022-09-12 21:50:00Z]
+      assert feed.fetch_after == ~U[2022-09-12 21:50:00.000000Z]
       assert feed.fetch_interval_seconds == 43
       assert feed.fetcher == :atom
       assert feed.name == "some updated name"
@@ -225,7 +226,8 @@ defmodule Consume.FetcherTest do
     end
 
     test "create_feed_item/1 with valid data creates a feed_item" do
-      valid_attrs = %{data: "some data", hash: "some hash"}
+      feed = feed_fixture()
+      valid_attrs = %{data: "some data", hash: "some hash", feed_id: feed.id}
 
       assert {:ok, %FeedItem{} = feed_item} = Fetcher.create_feed_item(valid_attrs)
       assert feed_item.data == "some data"

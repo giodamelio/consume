@@ -8,16 +8,24 @@ defmodule ConsumeWeb.FeedControllerTest do
     fetch_interval_seconds: 42,
     fetcher: :rss2_0,
     name: "some name",
-    uri: "https://nope.nope"
+    uri: "https://nope.nope",
+    enabled: false
   }
   @update_attrs %{
     fetch_after: ~U[2022-09-12 21:50:00Z],
     fetch_interval_seconds: 43,
     fetcher: :atom,
     name: "some updated name",
-    uri: "https://really-nope.nope"
+    uri: "https://really-nope.nope",
+    enabled: true
   }
-  @invalid_attrs %{fetch_after: nil, fetch_interval_seconds: nil, fetcher: nil, name: nil}
+  @invalid_attrs %{
+    fetch_after: nil,
+    fetch_interval_seconds: nil,
+    fetcher: nil,
+    name: nil,
+    enabled: nil
+  }
 
   describe "index" do
     test "lists all feeds", %{conn: conn} do
