@@ -64,6 +64,18 @@ defmodule ConsumeWeb.Helpers.Form do
     """
   end
 
+  def checkbox(assigns, form, field, opts \\ []) do
+    ~H"""
+    <div class="field">
+      <%= HTML.Form.label form, field, class: "label" %>
+      <div class="control">
+        <%= HTML.Form.checkbox form, field, opts %>
+      </div>
+      <%= error_tag form, field %>
+    </div>
+    """
+  end
+
   def button_link(text, path, opts \\ []) do
     classes = [
       "button"

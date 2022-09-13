@@ -11,6 +11,8 @@
   <%= BulmaForm.text_input @conn, f, :name %>
 
   <%= BulmaForm.text_input @conn, f, :uri %>
+
+  <%= BulmaForm.checkbox @conn, f, :enabled %>
   
   <%= BulmaForm.select @conn, f, :fetcher, Ecto.Enum.values(Consume.Fetcher.Feed, :fetcher), prompt: "Choose a value" %>
   

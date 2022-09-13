@@ -8,6 +8,7 @@ defmodule Consume.Fetcher.Feed do
     field :fetcher, Ecto.Enum, values: [:rss2_0, :atom, :youtube]
     field :name, :string
     field :uri, :string
+    field :enabled, :boolean
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule Consume.Fetcher.Feed do
   @doc false
   def changeset(feed, attrs) do
     feed
-    |> cast(attrs, [:name, :uri, :fetcher, :fetch_after, :fetch_interval_seconds])
-    |> validate_required([:name, :uri, :fetcher, :fetch_after, :fetch_interval_seconds])
+    |> cast(attrs, [:name, :uri, :enabled, :fetcher, :fetch_after, :fetch_interval_seconds])
+    |> validate_required([:name, :uri, :enabled, :fetcher, :fetch_after, :fetch_interval_seconds])
   end
 end
