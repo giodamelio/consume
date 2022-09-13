@@ -16,5 +16,6 @@ defmodule Consume.Fetcher.FeedItem do
     |> cast(attrs, [:hash, :data, :feed_id])
     |> validate_required([:hash, :data, :feed_id])
     |> foreign_key_constraint(:feed_id)
+    |> unique_constraint([:feed_id, :hash])
   end
 end
