@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?> <rss version="2.0" xml:base="http://www.nasa.gov/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/"> <channel> <title>NASA Breaking News</title>
+ <description>A RSS news feed containing the latest NASA news articles and press releases.</description>
+ <link>http://www.nasa.gov/</link>
+ <atom:link rel="self" href="http://www.nasa.gov/rss/dyn/breaking_news.rss" />
+ <language>en-us</language>
+ <managingEditor>jim.wilson@nasa.gov</managingEditor>
+ <webMaster>brian.dunbar@nasa.gov</webMaster>
+ <docs>http://blogs.harvard.edu/tech/rss</docs>
+ <item> <title>NASA Funds Projects to Study Orbital Debris, Space Sustainability</title>
+ <link>http://www.nasa.gov/press-release/nasa-funds-projects-to-study-orbital-debris-space-sustainability</link>
+ <description>As part of NASA&#039;s efforts to address orbital debris, the agency is funding research proposals from three university-based teams over the next year to analyze the economic, social, and policy issues associated with space sustainability.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/orbital_debris_1.jpg?itok=dHnslAmm" length="1685539" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-funds-projects-to-study-orbital-debris-space-sustainability</guid>
+ <pubDate>Tue, 13 Sep 2022 14:32 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482765</dc:identifier>
+</item>
+ <item> <title>NASA Announces Pending Departure of Science Associate Administrator</title>
+ <link>http://www.nasa.gov/press-release/nasa-announces-pending-departure-of-science-associate-administrator</link>
+ <description>Dr. Thomas Zurbuchen, associate administrator of NASA’s Science Mission Directorate, will leave the agency at the end of 2022, after six years of dedicated service.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/nhq202204040106_orig.jpeg?itok=C2PqCkYC" length="9685074" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-announces-pending-departure-of-science-associate-administrator</guid>
+ <pubDate>Tue, 13 Sep 2022 12:13 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482758</dc:identifier>
+</item>
+ <item> <title>Georgia, Illinois Students to Hear from Space Station Astronauts</title>
+ <link>http://www.nasa.gov/press-release/georgia-illinois-students-to-hear-from-space-station-astronauts</link>
+ <description>Students from Georgia and Illinois will have the opportunity this week to hear from astronauts aboard the International Space Station.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/kjell.jpg?itok=UMjn8J88" length="2162524" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/georgia-illinois-students-to-hear-from-space-station-astronauts</guid>
+ <pubDate>Mon, 12 Sep 2022 17:53 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482730</dc:identifier>
+</item>
+ <item> <title>NASA to Host Briefing on Perseverance Mars Rover Mission Operations</title>
+ <link>http://www.nasa.gov/press-release/nasa-to-host-briefing-on-perseverance-mars-rover-mission-operations</link>
+ <description>NASA will host a briefing at 11:30 a.m. EDT (8:30 a.m. PDT) on Thursday, Sept. 15, at the agency’s Jet Propulsion Laboratory in Southern California to provide highlights from the first year and a half of the Perseverance rover’s exploration of Mars.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/jezero_rocks.jpg?itok=bBDKG8oC" length="1896714" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-to-host-briefing-on-perseverance-mars-rover-mission-operations</guid>
+ <pubDate>Mon, 12 Sep 2022 09:49 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482717</dc:identifier>
+</item>
+ <item> <title>NASA Hosts National Space Council Meeting, Vice President Chairs Event</title>
+ <link>http://www.nasa.gov/press-release/nasa-hosts-national-space-council-meeting-vice-president-chairs-event</link>
+ <description>Vice President Kamala Harris highlighted the importance of climate, human spaceflight, and STEM education during the Biden-Harris Administration’s second National Space Council meeting Friday, held at NASA’s Johnson Space Center in Houston.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/vice_president_visits_jsc.jpg?itok=tM9KbeZy" length="8375850" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-hosts-national-space-council-meeting-vice-president-chairs-event</guid>
+ <pubDate>Fri, 09 Sep 2022 19:23 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482712</dc:identifier>
+</item>
+ <item> <title>NASA to Host National Space Council Meeting at Johnson Space Center</title>
+ <link>http://www.nasa.gov/press-release/nasa-to-host-national-space-council-meeting-at-johnson-space-center</link>
+ <description>NASA to Host National Space Council Meeting at Johnson Space Center</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/nasa_meatball_4.jpg?itok=WshAgQPn" length="85798" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-to-host-national-space-council-meeting-at-johnson-space-center</guid>
+ <pubDate>Fri, 09 Sep 2022 07:29 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482692</dc:identifier>
+</item>
+ <item> <title>NASA to Discuss Status of Next Artemis I Moon Mission Launch Attempt</title>
+ <link>http://www.nasa.gov/press-release/nasa-to-discuss-status-of-next-artemis-i-moon-mission-launch-attempt</link>
+ <description>NASA will hold a media teleconference at 11 a.m. EDT Thursday, Sept. 8, to discuss next steps for the Artemis I mission to launch the Space Launch System (SLS) rocket and Orion spacecraft from the agency’s Kennedy Space Center in Florida.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/52323317157_d6e86320dd_k.jpeg?itok=rx7ahDMv" length="442692" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-to-discuss-status-of-next-artemis-i-moon-mission-launch-attempt</guid>
+ <pubDate>Wed, 07 Sep 2022 17:10 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482598</dc:identifier>
+</item>
+ <item> <title>NASA Taps Axiom Space for First Artemis Moonwalking Spacesuits</title>
+ <link>http://www.nasa.gov/press-release/nasa-taps-axiom-space-for-first-artemis-moonwalking-spacesuits</link>
+ <description>NASA has selected Axiom Space to deliver a moonwalking system for the Artemis III mission, which will land Americans on the surface of the Moon for the first time in over 50 years. This award – the first one under a competitive spacesuits contract – is for a task order to develop a next generation Artemis spacesuit and supporting systems, and to de</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/samplecollection-2crew-xeva-final2.png?itok=ipn_WBqi" length="8979047" type="image/png" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-taps-axiom-space-for-first-artemis-moonwalking-spacesuits</guid>
+ <pubDate>Wed, 07 Sep 2022 16:40 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482597</dc:identifier>
+</item>
+ <item> <title>NASA Awards Contract for Marshall’s Mission Operations</title>
+ <link>http://www.nasa.gov/press-release/nasa-awards-contract-for-marshall-s-mission-operations</link>
+ <description>NASA has awarded the Marshall Operations Systems, Services, and Integration II (MOSSI II) contract to Teledyne Brown Engineering Inc. of Huntsville, Alabama.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/nasa-logo-web-rgb_0.jpg?itok=mrBnB_c9" length="189751" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-awards-contract-for-marshall-s-mission-operations</guid>
+ <pubDate>Wed, 07 Sep 2022 15:58 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482594</dc:identifier>
+</item>
+ <item> <title>NASA to Provide Artemis I Launch Update Saturday</title>
+ <link>http://www.nasa.gov/press-release/nasa-to-provide-artemis-i-launch-update-saturday</link>
+ <description>Following the Artemis I launch scrub Saturday from Launch Complex 39B at NASA’s Kennedy Space Center in Florida, the agency will hold a media briefing no earlier than 4 p.m. EDT on Saturday Sept. 3, to discuss mission status.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/artemis_i_update.jpg?itok=cMogBi_e" length="581581" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-to-provide-artemis-i-launch-update-saturday</guid>
+ <pubDate>Sat, 03 Sep 2022 12:11 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+ <dc:identifier>482545</dc:identifier>
+</item>
+</channel>
+</rss>

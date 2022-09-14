@@ -36,8 +36,9 @@ defmodule Consume.Fetcher.FetcherTest do
     def fetch(_uri) do
       data = "Hello World!"
       hash = :crypto.hash(:sha256, data)
+      item = %{version: 1, hash: hash, data: data}
 
-      {:ok, {hash, data}}
+      {:ok, [item]}
     end
 
     @impl true
@@ -47,7 +48,7 @@ defmodule Consume.Fetcher.FetcherTest do
   end
 
   test "correctly implements Consume.Fetcher.fetch" do
-    {:ok, {hash, data}} = ConstantFetcher.fetch("Not important")
+    {:ok, [%{hash: hash, data: data}]} = ConstantFetcher.fetch("Not important")
 
     assert data == "Hello World!"
 
